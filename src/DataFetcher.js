@@ -1,5 +1,5 @@
 
-
+var dogDataRows = [];
 
 function fetchAllData(){
     const apiUrl = 'https://api.jsonbin.io/b/5f4d604b514ec5112d136cd6'
@@ -17,7 +17,27 @@ function fetchAllData(){
 
             // console.log(data);
 
-            return data;
+            data.forEach(props => {
+                  
+                dogDataRows.push(createData(
+                      props.name, 
+                      props.sex, 
+                      props.breed, 
+                      props.img, 
+                      props.present, 
+                      props.age, 
+                      props.chipNumber, 
+                      { 
+                        name: props.name,
+                        lastName: props.lastName,
+                        phoneNumber: props.phoneNumber,
+                      },
+                ));
+
+              
+          });   
+
+            // return data;
             
             //ReactDOM.render(CreateTable(), rootD)
         
@@ -31,7 +51,26 @@ function fetchRegistrar(){
 
 }
 
+function createData(name, sex, breed, img, present, age, chipNumber, owner) {
+    return {
+      name,
+      sex,
+      breed,
+      img,
+      present,
+      age,
+      chipNumber,
+      owner:[
+        { 
+          name: owner.name, 
+          lastName: owner.lastName, 
+          phoneNumber: owner.phoneNumber
+        }
+      ],
+    };
+  }
 
 export {
     fetchAllData,
+    dogDataRows,
 };

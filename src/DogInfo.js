@@ -1,6 +1,6 @@
 import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
- import { fetchAllData } from './DataFetcher';
+import { dogDataRows, fetchAllData } from './DataFetcher';
 
 class DogInfo extends Component {
   render(){
@@ -9,7 +9,9 @@ class DogInfo extends Component {
 
                <h1>Dog information</h1>
 
-               <Button variant="contained" color="primary" onClick={CreateDogInfo}>Fetch data</Button>
+               <Button variant="contained" color="primary" onClick={fetchAllDataa}>Fetch data</Button>
+
+               <div id="dog-info">Här kommer det synas</div>
 
         </React.Fragment>
   
@@ -17,11 +19,24 @@ class DogInfo extends Component {
   }
 }
 
-function CreateDogInfo(){
-  const data = fetchAllData()
+const fetchAllDataa = async () => {
 
-  console.log(data)
+    const result = await fetchAllData()
+    // do something else here after firstFunction completes
+    console.log(dogDataRows)
 
+     const divEle = document.getElementById("dog-info")
+
+    dogDataRows.forEach(props => {
+      const newDog = document.createElement("p")
+      newDog.textContent = props.name + "  " + props.sex
+
+      divEle.appendChild(newDog)
+
+    });
+
+ 
+  
 
 }
 
