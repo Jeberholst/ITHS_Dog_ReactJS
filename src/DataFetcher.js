@@ -33,7 +33,6 @@ function fetchAllData(){
                         phoneNumber: props.phoneNumber,
                       },
                 ));
-
               
           });   
 
@@ -47,8 +46,9 @@ function fetchAllData(){
         });
 }
 
-function fetchRegistrar(){
-
+function clearDogData(){
+  var emptyArr = [];
+  dogDataRows = emptyArr
 }
 
 function createData(name, sex, breed, img, present, age, chipNumber, owner) {
@@ -73,4 +73,6 @@ function createData(name, sex, breed, img, present, age, chipNumber, owner) {
 export {
     fetchAllData,
     dogDataRows,
+    createData,
+    clearDogData
 };
