@@ -70,9 +70,20 @@ function createData(name, sex, breed, img, present, age, chipNumber, owner) {
     };
   }
 
+
+function convertToProperCase(str){
+
+    const name = String(str)
+    const a = name.charAt(0).toUpperCase()
+    const b = name.substr(1).toLowerCase()
+    return (a + b)
+ 
+}
+
 export {
     fetchAllData,
     dogDataRows,
     createData,
-    clearDogData
+    clearDogData,
+    convertToProperCase,
 };
