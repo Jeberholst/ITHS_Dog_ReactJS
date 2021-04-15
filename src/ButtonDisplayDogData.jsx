@@ -1,7 +1,9 @@
-import { Box, Button, Collapse, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
-import React, { Component } from 'react';
-import { dogDataRows, fetchAllData, createData, clearDogData, convertToProperCase } from './DataFetcher';
-import ButtonDisplayDogData from './ButtonDisplayDogData';
+import React, {
+    useState, useEffect
+} from 'react'
+import { Button, Container, Paper } from '@material-ui/core';
+import { dogDataRows, convertToProperCase } from './DataFetcher';
+import ReactDOM from 'react-dom';
 
 const cardStyle = {
   width: 400,
@@ -12,39 +14,18 @@ const cardStyle = {
 };
 
 
-class DogInfo extends Component {
-  render(){
-    return (
-        <React.Fragment>
+const ButtonDisplayDogData = () => {
 
+    return(
+        <Button variant="contained" color="primary" onClick={displayData}>Fetch dogInfo</Button>
+    )
 
-               <ButtonDisplayDogData/>
-               <div id="dog-info">Här kommer det synas</div>
-
-        </React.Fragment>
-  
-    );
-  }
 }
 
+function displayData(){
 
-const fetchAllDataa = async () => {
-
-   // const result = await fetchAllData()
-    // do something else here after fetchAllData completes
-    console.log(dogDataRows)
-
-     const divEle = document.getElementById("dog-info")
-
-    // dogDataRows.forEach(props => {
-    dogDataRows.forEach(props => {
-      const newDog = document.createElement("p")
-      newDog.textContent = props.name + "  " + props.sex
-
-      divEle.appendChild(newDog)
-
-    });
- 
+  const element = document.getElementById('dog-info')
+  ReactDOM.render((CreateTable()), element)
 }
 
 function AddRow(props){
@@ -102,6 +83,7 @@ function InfoContainer(props){
 
               <AddRow mValue={dogInfo}/>
               <AddRow mValue={dogOwnerInfo}/>
+              
 
           </div>
 
@@ -130,4 +112,4 @@ function ImageContainer(props) {
   );
 }
 
-export default DogInfo;
+export default ButtonDisplayDogData

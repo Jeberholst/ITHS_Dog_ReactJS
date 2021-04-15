@@ -55,17 +55,6 @@
   border-radius: 10px;
 }
 
-.dog-info-owner {
-  font-size: 12px;
-  width: 100px;
-  color: white;
-  background-color: rgba(67, 67, 67, 0.548);
-  padding: 10px;
-  margin-left: 10px;
-  text-align: start;
-  border-radius: 10px;
-}
-
 
 /* @keyframes App-logo-spin {
   from {

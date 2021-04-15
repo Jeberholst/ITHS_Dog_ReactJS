@@ -1,5 +1,34 @@
+import MockLocalData from './DogFetchedData.json';
 
 var dogDataRows = [];
+
+const fakeFetchData = async () => {
+
+  const fakeData = MockLocalData
+  clearDogData()
+  console.log(fakeData)
+  
+  fakeData.forEach(props => {
+                  
+      dogDataRows.push(createData(
+            props.name, 
+            props.sex, 
+            props.breed, 
+            props.img, 
+            props.present, 
+            props.age, 
+            props.chipNumber, 
+            { 
+              name: props.owner.name,
+              lastName: props.owner.lastName,
+              phoneNumber: props.owner.phoneNumber,
+            },
+      ));
+    
+  }); 
+
+}
+
 
 function fetchAllData(){
     const apiUrl = 'https://api.jsonbin.io/b/5f4d604b514ec5112d136cd6'
@@ -86,4 +115,5 @@ export {
     createData,
     clearDogData,
     convertToProperCase,
+    fakeFetchData,
 };

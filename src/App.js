@@ -6,6 +6,8 @@ import DogInfo from './DogInfo';
 import WelcomeScreen from './WelcomeScreen';
 import { Button, ButtonGroup } from '@material-ui/core';
 import ReactDOM from 'react-dom'
+import { fakeFetchData } from './DataFetcher'
+
 
 function App() {
   return (
@@ -39,16 +41,20 @@ function App() {
 
 function RenderWelcomeScreen() {
   const root = document.getElementById('app-content-view')
+  document.title = 'Welcome Screen'
+  fakeFetchData()
   ReactDOM.render(<WelcomeScreen/>, root)
 }
 
 function RenderRegistrar() {
   const root = document.getElementById('app-content-view')
+  document.title = 'Owner registrar'
   ReactDOM.render(<Registrar/>, root)
 }
 
 function RenderListOfDogs() {
   const root = document.getElementById('app-content-view')
+  document.title = 'Dog registrar'
   ReactDOM.render(<DogInfo/>, root)
 }
 
