@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import FetchButton from './MoreButton';
 import CallButton from './CallButton';
 import MoreButton from './MoreButton';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 const cardStyle = {
   width: 400,
@@ -15,11 +16,6 @@ const cardStyle = {
 };
 
 const tableCellStyle = {
-  root: {
-    '& *': {
-      borderBottom: 'unset',
-    },
-  },
   width: "50%",
   height: "100%",
   padding: 5,
@@ -27,6 +23,18 @@ const tableCellStyle = {
   marginBottom: 5,
   background: "#ffffff",
   borderBottom: 'unset',
+};
+
+const tcOwnerStyle = {
+  width: "50%",
+  height: "100%",
+  fontSize: 16,
+  padding: 5,
+  paddingTop: 5,
+  marginBottom: 5,
+  borderBottom: 'unset',
+  fontWeight: 'bold',
+  fontFamily: 'Walter-Turncoat',
 };
 
 const ButtonDisplayRegistrarData = () => {
@@ -72,13 +80,13 @@ function createOwnerData(name, lastName, phoneNumber){
 function InfoContainer(props) {
   const { row } = props.props;
 
-  const dogBasicInfo = convertToProperCase(row.name) + ', ' + convertToProperCase(row.breed) + ', ' + row.age + ' år, ' + convertToProperCase(row.sex)
+  const dogBasicInfo = convertToProperCase(row.breed) + ', ' + row.age + ' år'
 
   var dogOwnerInfo = ''
   var ownerData = createOwnerData()
 
   row.owner.map((owner) => (
-    dogOwnerInfo = convertToProperCase(owner.name) + ' ' + owner.lastName + ' - ' + owner.phoneNumber,
+    dogOwnerInfo = convertToProperCase(owner.name) + ' ' + owner.lastName,
     ownerData = createOwnerData(owner.name, owner.lastName, owner.phoneNumber)
   ))
 
@@ -90,6 +98,9 @@ function InfoContainer(props) {
           <TableBody>
 
             <TableRow>
+              <TableCell style={tableCellStyle} align="left">
+                <Gender sex={row.sex}/>
+              </TableCell>
               <TableCell style={tableCellStyle} align="right">
                   <CallButton phoneNumber={ownerData.phoneNumber}/>
                   <MoreButton />
@@ -97,8 +108,14 @@ function InfoContainer(props) {
             </TableRow>
 
             <TableRow>
-              <TableCell style={tableCellStyle} align="left">
+              <TableCell style={tcOwnerStyle} align="left">
                 {dogOwnerInfo}
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell style={tableCellStyle} align="left">
+                {convertToProperCase(row.name)}
               </TableCell>
             </TableRow>
 
@@ -116,6 +133,29 @@ function InfoContainer(props) {
 
     </React.Fragment>
   );
+
+}
+
+function Gender(props){
+
+  const gender = props.sex
+
+  switch(String(gender)){
+      case 'male':
+        return (
+          <FiberManualRecordIcon style={{fill: "#c0cbff"}}/>
+        );
+      case 'female':
+        return (
+          <FiberManualRecordIcon style={{fill: "#FFC0CB"}}/>
+        );
+      default:
+        return (
+          <FiberManualRecordIcon style={{fill: "black"}}/>
+        );
+  };
+
+
 
 }
 

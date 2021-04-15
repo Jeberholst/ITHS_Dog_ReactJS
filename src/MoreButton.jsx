@@ -11,18 +11,15 @@ const MoreButton = () => {
 
     return(
         <React.Fragment>
-            <IconButton variant="contained" color="primary" onClick={onButtonClick()}>
-                <MoreHorizOutlinedIcon fontSize="small" />
+        <IconButton variant="contained" color="primary" onClick={function (){
+            console.log('Button CLICK More...')
+        }}>
+                <MoreHorizOutlinedIcon style={{fill: "black"}}  fontSize="small" />
             </IconButton>
         </React.Fragment>
         // <Button variant="contained" color="primary" onClick={onButtonClick}>More</Button>
     )
 
-}
-
-function onButtonClick(){
-
-    console.log('Button CLICK More...' )
 }
 
 

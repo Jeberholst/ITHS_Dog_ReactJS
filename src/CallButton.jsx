@@ -8,7 +8,7 @@ const CallButton = (props) => {
         <IconButton variant="contained" color="primary" onClick={function (){
             console.log('Button CLICK ' + phoneNumber)
         }}>
-             <Phone fontSize="small" />
+             <Phone style={{fill: "green"}} fontSize="small" />
         </IconButton>
     )
 
