@@ -6,7 +6,7 @@ import WelcomeScreen from './WelcomeScreen';
 import { Button, ButtonGroup } from '@material-ui/core';
 import ReactDOM from 'react-dom'
 import { fakeFetchData } from './DataFetcher'
-import ContainerMoreDogInfo from './ContainerMoreDogInfo';
+import ContainerMoreDogInfo from './ContainerMoreDogInfoOriginal';
 
 
 function App() {

@@ -5,14 +5,14 @@ import ReactDOM from 'react-dom';
 
 const cardStyle = {
   width: 400,
-  height: "100%",
+  height: 'fit-content',
   padding: 5,
   paddingTop: 15,
   marginBottom: 5,
 };
 
 
-const ContainerMoreDogInfo = () => {
+const ContainerMoreDogInfoOriginal = () => {
 
     console.log(selectedDog)
 
@@ -47,11 +47,10 @@ function CreateContainer() {
   );
 }
 
-
-
 function InfoContainer(){
 
-  const dogInfo = convertToProperCase(selectedDog.props.breed) + ', ' + selectedDog.props.age + ' år, ' + selectedDog.props.sex 
+  const dogInfo = convertToProperCase(selectedDog.props.breed) + ', ' + selectedDog.props.age + ' år, ' + convertToProperCase(selectedDog.props.sex)
+  const dogInfoExtra = selectedDog.props.chipNumber
   const dogOwnerInfo = convertToProperCase(selectedDog.props.ownerName) + ', ' + convertToProperCase(selectedDog.props.ownerLastName)
 
   return (
@@ -63,6 +62,8 @@ function InfoContainer(){
           <div className="dog-info">
 
               <AddRow mValue={dogInfo}/>
+              <IsPresent present={selectedDog.props.present}/>
+              <AddRow mValue={dogInfoExtra}/>
               <AddRow mValue={dogOwnerInfo}/>
               
           </div>
@@ -71,6 +72,23 @@ function InfoContainer(){
   );
 
       
+}
+
+function IsPresent(props) {
+  const isPresent = props.present
+
+  if(isPresent){
+    return (
+      <AddRow mValue={'Närvarande'}/>
+    );
+  } else {
+    return (
+      <AddRow mValue={'Frånvarande'}/>
+    );
+
+  }
+
+
 }
 
 function ImageContainer() {
@@ -91,4 +109,5 @@ function ImageContainer() {
   );
 }
 
-export default ContainerMoreDogInfo
+export default ContainerMoreDogInfoOriginal;
+

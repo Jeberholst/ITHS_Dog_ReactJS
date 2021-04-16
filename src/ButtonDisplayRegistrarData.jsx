@@ -1,11 +1,20 @@
 import React from 'react'
-import { Button, Container, Paper, Table, TableBody, TableCell, TableRow } from '@material-ui/core';
-import { dogDataRows, convertToProperCase, selectedDog } from './DataFetcher';
+import { Button, Container, Dialog, Paper, Slide, Table, TableBody, TableCell, TableRow, IconButton } from '@material-ui/core';
+import { dogDataRows, convertToProperCase, setData } from './DataFetcher';
 import ReactDOM from 'react-dom';
 import CallButton from './CallButton';
-import MoreButton from './MoreButton';
+// import MoreButton from './MoreButton';
 import InfoLabel from './InfoLabel';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import MoreInfoDialog from './MoreInfoDialog'
+import { makeStyles } from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/Close';
+import ContainerMoreDogInfoOriginal from './ContainerMoreDogInfoOriginal';
+import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
 
 const breedColor = '#8EA4AA'
 const ageColor = '#93A99E'
@@ -62,7 +71,7 @@ function CreateTable() {
   return (
     <React.Fragment>
       {dogDataRows.map((row) => (
-        <Card key={row.breed} row={row} />
+        <Card key={row.name} row={row} />
       ))}
     </React.Fragment>
   );
@@ -125,6 +134,84 @@ function InfoContainer(props) {
   );
 
 }
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    position: 'relative',
+    marginBottom: 50,
+  },
+  title: {
+    marginLeft: theme.spacing(2),
+    flex: 1,
+  },
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
+
+
+const MoreButton = (props) => {
+
+  // const [name, function] = useState(startState);
+  // const [] = useEffect();
+
+  // console.log(selectedDog)
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = (boolean) => {
+    
+      if(boolean !== open){
+        setData(props)
+        setOpen(true);
+     }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
+  return(
+      <React.Fragment>
+
+        <Button
+          className={classes.button} variant="contained" color="secondary" size="small"
+          onClick={() => handleClickOpen(true)}
+          startIcon={<MoreHorizOutlinedIcon/>}
+        >
+          More
+        </Button>
+
+          <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+        
+            <AppBar className={classes.appBar}>
+              <Toolbar>
+                <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+                  <CloseIcon />
+                </IconButton>
+                
+                <Typography variant="h6" className={classes.title}>
+                  Title
+                </Typography>
+
+              </Toolbar>
+            </AppBar>
+
+            <ContainerMoreDogInfoOriginal></ContainerMoreDogInfoOriginal>
+
+          </Dialog>
+         {/* <MoreInfoDialog fullScreen open={open} onClose={() => handleClose} TransitionComponent={Transition}></MoreInfoDialog> */}
+
+      </React.Fragment>
+
+  );
+
+}
+
 
 function Gender({ sex }){
 
