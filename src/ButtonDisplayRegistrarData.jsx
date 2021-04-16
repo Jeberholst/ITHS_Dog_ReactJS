@@ -6,7 +6,6 @@ import CallButton from './CallButton';
 // import MoreButton from './MoreButton';
 import InfoLabel from './InfoLabel';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import MoreInfoDialog from './MoreInfoDialog'
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
