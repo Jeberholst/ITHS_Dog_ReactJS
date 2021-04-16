@@ -1,6 +1,7 @@
 import MockLocalData from './DogFetchedData.json';
 
 var dogDataRows = [];
+var selectedDog = createData();
 
 const fakeFetchData = async () => {
 
@@ -18,17 +19,16 @@ const fakeFetchData = async () => {
             props.present, 
             props.age, 
             props.chipNumber, 
-            { 
-              name: props.owner.name,
-              lastName: props.owner.lastName,
-              phoneNumber: props.owner.phoneNumber,
-            },
+            props.owner.name,
+            props.owner.lastName,
+            props.owner.phoneNumber,
       ));
     
   }); 
 
-}
+  dogDataRows.sort(dynamicSort('ownerName'));
 
+}
 
 function fetchAllData(){
     const apiUrl = 'https://api.jsonbin.io/b/5f4d604b514ec5112d136cd6'
@@ -44,8 +44,6 @@ function fetchAllData(){
                 return Promise.reject(error);
             }
 
-            // console.log(data);
-
             data.forEach(props => {
                   
                 dogDataRows.push(createData(
@@ -56,16 +54,14 @@ function fetchAllData(){
                       props.present, 
                       props.age, 
                       props.chipNumber, 
-                      { 
-                        name: props.name,
-                        lastName: props.lastName,
-                        phoneNumber: props.phoneNumber,
-                      },
+                      props.owner.name,
+                      props.owner.lastName,
+                      props.owner.phoneNumber,
                 ));
               
           });   
 
-            // return data;
+            dogDataRows.sort(dynamicSort('owner'));
             
             //ReactDOM.render(CreateTable(), rootD)
         
@@ -75,12 +71,33 @@ function fetchAllData(){
         });
 }
 
+function dynamicSort(property) {
+  var sortOrder = 1;
+
+  if(property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+  }
+  return function (a, b) {
+      /* next line works with strings and numbers, 
+       * and you may want to customize it to your needs
+       */
+      var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+      return result * sortOrder;
+  }
+}
+
 function clearDogData(){
   var emptyArr = [];
   dogDataRows = emptyArr
 }
 
-function createData(name, sex, breed, img, present, age, chipNumber, owner) {
+function setData(props){
+  var arr = props;
+  selectedDog = arr
+}
+
+function createData(name, sex, breed, img, present, age, chipNumber, ownerName, ownerLastName, ownerPhoneNumber) {
     return {
       name,
       sex,
@@ -89,13 +106,9 @@ function createData(name, sex, breed, img, present, age, chipNumber, owner) {
       present,
       age,
       chipNumber,
-      owner:[
-        { 
-          name: owner.name, 
-          lastName: owner.lastName, 
-          phoneNumber: owner.phoneNumber
-        }
-      ],
+      ownerName,
+      ownerLastName,
+      ownerPhoneNumber,
     };
   }
 
@@ -112,8 +125,10 @@ function convertToProperCase(str){
 export {
     fetchAllData,
     dogDataRows,
+    selectedDog,
     createData,
     clearDogData,
     convertToProperCase,
     fakeFetchData,
+    setData,
 };

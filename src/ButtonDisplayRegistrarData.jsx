@@ -1,40 +1,50 @@
 import React from 'react'
-import { Button, ButtonGroup, Container, Paper, Table, TableBody, TableCell, TableRow } from '@material-ui/core';
-import { dogDataRows, fakeFetchData, convertToProperCase } from './DataFetcher';
+import { Button, Container, Paper, Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+import { dogDataRows, convertToProperCase, selectedDog } from './DataFetcher';
 import ReactDOM from 'react-dom';
-import FetchButton from './MoreButton';
 import CallButton from './CallButton';
 import MoreButton from './MoreButton';
+import InfoLabel from './InfoLabel';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
+const breedColor = '#8EA4AA'
+const ageColor = '#93A99E'
+const sexMaleColor = '#74777C'
+const sexFemaleColor = '#B299AD'
+
 const cardStyle = {
-  width: 400,
+  width: 300,
   height: "100%",
-  padding: 5,
-  paddingTop: 5,
+  padding: 20,
   marginBottom: 5,
 };
 
-const tableCellStyle = {
-  width: "50%",
+const tcDogNameStyle = {
+  display: 'inline',
+  width: "100%",
   height: "100%",
-  padding: 5,
-  paddingTop: 5,
-  marginBottom: 5,
+  padding: 10,
+  marginBottom: 15,
   background: "#ffffff",
   borderBottom: 'unset',
+  fontSize: 18,
 };
 
-const tcOwnerStyle = {
-  width: "50%",
-  height: "100%",
-  fontSize: 16,
+const tcDogInfoStyle = {
+  display: 'inline',
+  width: "100%",
+  height: 'fit-content',
+  fontSize: 12,
   padding: 5,
-  paddingTop: 5,
   marginBottom: 5,
   borderBottom: 'unset',
-  fontWeight: 'bold',
-  fontFamily: 'Walter-Turncoat',
+};
+
+const trOwnerStyle = {
+  width: '100%',
+  height: "fit-content",
+  fontSize: 22,
+  fontStyle: 'italic',
 };
 
 const ButtonDisplayRegistrarData = () => {
@@ -44,7 +54,6 @@ const ButtonDisplayRegistrarData = () => {
 }
 
 function displayData() {
-
   const element = document.getElementById('dog-info')
   ReactDOM.render((CreateTable()), element)
 }
@@ -69,26 +78,12 @@ function Card(props) {
   );
 }
 
-function createOwnerData(name, lastName, phoneNumber){
-  return {
-    name,
-    lastName,
-    phoneNumber,
-  };
-}
-
 function InfoContainer(props) {
   const { row } = props.props;
 
-  const dogBasicInfo = convertToProperCase(row.breed) + ', ' + row.age + ' år'
-
   var dogOwnerInfo = ''
-  var ownerData = createOwnerData()
 
-  row.owner.map((owner) => (
-    dogOwnerInfo = convertToProperCase(owner.name) + ' ' + owner.lastName,
-    ownerData = createOwnerData(owner.name, owner.lastName, owner.phoneNumber)
-  ))
+  dogOwnerInfo = convertToProperCase(row.ownerName) + ' ' + row.ownerLastName
 
   return (
     <React.Fragment>
@@ -97,31 +92,26 @@ function InfoContainer(props) {
         <Table>
           <TableBody>
 
-            <TableRow>
-              <TableCell style={tableCellStyle} align="left">
-                <Gender sex={row.sex}/>
-              </TableCell>
-              <TableCell style={tableCellStyle} align="right">
-                  <CallButton phoneNumber={ownerData.phoneNumber}/>
-                  <MoreButton />
-              </TableCell>
+            <TableRow style={trOwnerStyle}>
+              {dogOwnerInfo}
             </TableRow>
 
-            <TableRow>
-              <TableCell style={tcOwnerStyle} align="left">
-                {dogOwnerInfo}
-              </TableCell>
+            <TableRow style={trOwnerStyle}>
+              <CallButton phoneNumber={row.ownerPhoneNumber}/>
+              <MoreButton props={row} />
             </TableRow>
-
+            
             <TableRow>
-              <TableCell style={tableCellStyle} align="left">
+              <TableCell style={tcDogNameStyle}>
                 {convertToProperCase(row.name)}
               </TableCell>
             </TableRow>
 
             <TableRow>
-              <TableCell style={tableCellStyle} align="left">
-                {dogBasicInfo}
+              <TableCell style={tcDogInfoStyle}>
+                <Gender sex={row.sex}/>
+                <InfoLabel text={convertToProperCase(row.breed)} bgColor={breedColor}/>
+                <InfoLabel text={convertToProperCase(row.age)  + ' år'} bgColor={ageColor}/>
               </TableCell>
             </TableRow>
 
@@ -136,22 +126,20 @@ function InfoContainer(props) {
 
 }
 
-function Gender(props){
+function Gender({ sex }){
 
-  const gender = props.sex
-
-  switch(String(gender)){
+  switch(String(sex)){
       case 'male':
         return (
-          <FiberManualRecordIcon style={{fill: "#c0cbff"}}/>
+          <InfoLabel text={convertToProperCase(sex)} bgColor={sexMaleColor}/>
         );
       case 'female':
         return (
-          <FiberManualRecordIcon style={{fill: "#FFC0CB"}}/>
+          <InfoLabel text={convertToProperCase(sex)} bgColor={sexFemaleColor}/>
         );
       default:
         return (
-          <FiberManualRecordIcon style={{fill: "black"}}/>
+          <InfoLabel text={'Not supplied'} bgColor={"#000000"}/>
         );
   };
 

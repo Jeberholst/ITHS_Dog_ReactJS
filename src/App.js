@@ -2,11 +2,11 @@ import logo from './dog.svg';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Registrar from './Registrar'
-import DogInfo from './DogInfo';
 import WelcomeScreen from './WelcomeScreen';
 import { Button, ButtonGroup } from '@material-ui/core';
 import ReactDOM from 'react-dom'
 import { fakeFetchData } from './DataFetcher'
+import ContainerMoreDogInfo from './ContainerMoreDogInfo';
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
           <ButtonGroup variant="contained" color="secondary" aria-label="contained secondary button group">
             <Button onClick={RenderWelcomeScreen}>Welcome  Screen</Button>
             <Button onClick={RenderRegistrar}>Registrar</Button>
-            <Button onClick={RenderListOfDogs}>List of dogs</Button>
+            {/* <Button onClick={RenderListOfDogs}>List of dogs</Button> */}
           </ButtonGroup>    
         </div>
         <div id="app-content-view" className="App-content-view">
@@ -27,13 +27,11 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={WelcomeScreen}/>
                     <Route exact path="/Registrar" component={Registrar}/>
-                    <Route exact path="/DogInfo" component={DogInfo}/>
+                    <Route exact path="/DogInfo" component={ContainerMoreDogInfo}/>
                 </Switch>
             </Router>
           </div>
           
-
-
       </header>
     </div>
   );
@@ -52,11 +50,11 @@ function RenderRegistrar() {
   ReactDOM.render(<Registrar/>, root)
 }
 
-function RenderListOfDogs() {
-  const root = document.getElementById('app-content-view')
-  document.title = 'Dog registrar'
-  ReactDOM.render(<DogInfo/>, root)
-}
+// function RenderListOfDogs() {
+//   const root = document.getElementById('app-content-view')
+//   document.title = 'Dog registrar'
+//   ReactDOM.render(<DogInfo/>, root)
+// }
 
 
 export default App;

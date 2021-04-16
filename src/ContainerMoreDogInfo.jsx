@@ -1,6 +1,7 @@
-import {Container, Paper} from '@material-ui/core';
-import React, { Component } from 'react';
+import React from 'react'
+import { Container, Paper } from '@material-ui/core';
 import { selectedDog, convertToProperCase } from './DataFetcher';
+import ReactDOM from 'react-dom';
 
 const cardStyle = {
   width: 400,
@@ -10,15 +11,17 @@ const cardStyle = {
   marginBottom: 5,
 };
 
-class DogInfo extends Component {
-  render(){
-    return (
-        <React.Fragment>
-          <Card props={selectedDog}/>
-        </React.Fragment>
-  
-    );
-  }
+
+const ContainerMoreDogInfo = () => {
+
+    console.log(selectedDog)
+
+    return(
+      <React.Fragment>
+        <CreateContainer></CreateContainer>
+      </React.Fragment>
+    )
+
 }
 
 function AddRow(props){
@@ -32,49 +35,36 @@ function AddRow(props){
   );
 }
 
-function Card(props) {
-  // const { row } = props;
+function CreateContainer() {
 
   return (
     <React.Fragment>
-
         <Container className='card-container' style={cardStyle} component={Paper}>
-            <ImageContainer props={props}/>
-            <InfoContainer props={props}/>
+            <ImageContainer/>
+            <InfoContainer/>
        </Container>
     </React.Fragment>
   );
 }
 
-function CreateTable() {
-  return (
-    <React.Fragment>
-        <InfoContainer/>
-    </React.Fragment>
-  );
-}
 
-function InfoContainer(props){
 
-  const { row } = props.props;
-  const dogInfo = convertToProperCase(row.breed) + ', ' + row.age + ' år, ' + row.sex 
-  
-  var dogOwnerInfo = ''
-  row.owner.map((owner) => (
-     dogOwnerInfo = convertToProperCase(owner.name) + ' ' + owner.lastName + ' - ' + owner.phoneNumber
-  ))
+function InfoContainer(){
+
+  const dogInfo = convertToProperCase(selectedDog.props.breed) + ', ' + selectedDog.props.age + ' år, ' + selectedDog.props.sex 
+  const dogOwnerInfo = convertToProperCase(selectedDog.props.ownerName) + ', ' + convertToProperCase(selectedDog.props.ownerLastName)
 
   return (
     <React.Fragment>
         <div className="dog-name">
-            {row.name}
+            {selectedDog.name}
           </div>
 
           <div className="dog-info">
 
               <AddRow mValue={dogInfo}/>
               <AddRow mValue={dogOwnerInfo}/>
-
+              
           </div>
 
     </React.Fragment>
@@ -83,13 +73,12 @@ function InfoContainer(props){
       
 }
 
-function ImageContainer(props) {
-  const { row } = props.props;
+function ImageContainer() {
 
   const imageStyle = {
     width: "100%",
     height: 300,
-    background: `url(${row.img})`,
+    backgroundImage: `url(${selectedDog.props.img})`,
     borderRadius: 5,
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat"
@@ -102,4 +91,4 @@ function ImageContainer(props) {
   );
 }
 
-export default DogInfo;
+export default ContainerMoreDogInfo
