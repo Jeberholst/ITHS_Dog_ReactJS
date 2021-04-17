@@ -39,7 +39,7 @@ function CreateContainer() {
 
   return (
     <React.Fragment>
-        <Container className='card-container' style={cardStyle} component={Paper}>
+        <Container className='card-container' style={cardStyle}>
             <ImageContainer/>
             <InfoContainer/>
        </Container>
@@ -55,10 +55,6 @@ function InfoContainer(){
 
   return (
     <React.Fragment>
-        <div className="dog-name">
-            {selectedDog.name}
-          </div>
-
           <div className="dog-info">
 
               <AddRow mValue={dogInfo}/>

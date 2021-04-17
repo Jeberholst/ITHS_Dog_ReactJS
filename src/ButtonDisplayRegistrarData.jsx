@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Container, Dialog, Paper, Slide, Table, TableBody, TableCell, TableRow, IconButton } from '@material-ui/core';
-import { dogDataRows, convertToProperCase, setData } from './DataFetcher';
+import { Button, Container, Dialog, Paper, Slide, Table, TableBody, TableCell, TableRow, IconButton, DialogContent, DialogTitle, DialogActions } from '@material-ui/core';
+import { dogDataRows, convertToProperCase, setData, selectedDog } from './DataFetcher';
 import ReactDOM from 'react-dom';
 import CallButton from './CallButton';
 // import MoreButton from './MoreButton';
@@ -54,6 +54,25 @@ const trOwnerStyle = {
   fontSize: 22,
   fontStyle: 'italic',
 };
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    position: 'relative',
+    marginBottom: 15,
+    backgroundColor: '#282c34'
+  },
+  title: {
+    marginLeft: theme.spacing(0),
+    flex: 1,
+  },
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 const ButtonDisplayRegistrarData = () => {
   return (
@@ -134,31 +153,76 @@ function InfoContainer(props) {
 
 }
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: 'relative',
-    marginBottom: 50,
-  },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1,
-  },
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
 
 
 const MoreButton = (props) => {
 
-  // const [name, function] = useState(startState);
-  // const [] = useEffect();
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [currentDogName, setDogName] = React.useState('Title');
 
-  // console.log(selectedDog)
+  const handleClickOpen = (boolean) => {
+    
+      if(boolean !== open){
+        setData(props)
+        setOpen(true);
+     }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleDogName = (name) => {
+    setDogName(name);
+  };
+
+  return(
+      <React.Fragment>
+
+
+        <IconButton 
+          color="inherit" 
+          onClick={ function() {
+              handleClickOpen(true)
+              handleDogName(props.props.name)
+            }
+          }
+          >
+          <MoreHorizOutlinedIcon/>
+        </IconButton>
+
+        <Dialog open={open} onClose={handleClose} TransitionComponent={Transition}>
+        <AppBar className={classes.appBar}>
+              <Toolbar>
+          
+                <Typography variant="h6" className={classes.title}>
+                  {currentDogName}
+                </Typography>
+
+                <IconButton edge="end" color="inherit" onClick={handleClose} aria-label="close">
+                  <CloseIcon />
+                </IconButton>
+
+              </Toolbar>
+            </AppBar>
+
+
+          <DialogContent>
+            <ContainerMoreDogInfoOriginal></ContainerMoreDogInfoOriginal>
+          </DialogContent>
+
+    
+      </Dialog>
+
+      </React.Fragment>
+
+  );
+
+}
+
+const MoreButton2 = (props) => {
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
