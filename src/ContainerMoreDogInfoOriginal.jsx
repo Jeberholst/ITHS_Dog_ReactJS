@@ -1,7 +1,16 @@
 import React from 'react'
 import { Container, Paper } from '@material-ui/core';
 import { selectedDog, convertToProperCase } from './DataFetcher';
+import InfoLabel from './InfoLabel';
 import ReactDOM from 'react-dom';
+
+const breedColor = '#8EA4AA'
+const ageColor = '#93A99E'
+const sexMaleColor = '#74777C'
+const sexFemaleColor = '#B299AD'
+const chipNumberColor = '#2d2d2d'
+const isPresentColor = '#4D9861'
+const isNotPresentColor = '#969492'
 
 const cardStyle = {
   width: 400,
@@ -10,7 +19,6 @@ const cardStyle = {
   paddingTop: 15,
   marginBottom: 5,
 };
-
 
 const ContainerMoreDogInfoOriginal = () => {
 
@@ -50,19 +58,26 @@ function CreateContainer() {
 function InfoContainer(){
 
   const dogInfo = convertToProperCase(selectedDog.props.breed) + ', ' + selectedDog.props.age + ' år, ' + convertToProperCase(selectedDog.props.sex)
-  const dogInfoExtra = selectedDog.props.chipNumber
-  const dogOwnerInfo = convertToProperCase(selectedDog.props.ownerName) + ', ' + convertToProperCase(selectedDog.props.ownerLastName)
+  const dogOwnerInfo = convertToProperCase(selectedDog.props.ownerName) + ' ' + convertToProperCase(selectedDog.props.ownerLastName)
 
   return (
     <React.Fragment>
-          <div className="dog-info">
-
-              <AddRow mValue={dogInfo}/>
+          <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
+              <InfoLabel text={convertToProperCase(selectedDog.props.breed)} bgColor={breedColor}/>
+              <InfoLabel text={convertToProperCase(selectedDog.props.age)  + ' år'} bgColor={ageColor}/>
+              <Gender sex={selectedDog.props.sex}/>
               <IsPresent present={selectedDog.props.present}/>
-              <AddRow mValue={dogInfoExtra}/>
-              <AddRow mValue={dogOwnerInfo}/>
-              
           </div>
+
+          <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
+              <InfoLabel text={selectedDog.props.chipNumber} bgColor={chipNumberColor}/>
+              <InfoLabel text={dogOwnerInfo} bgColor={chipNumberColor}/>
+              <InfoLabel text={selectedDog.props.ownerPhoneNumber} bgColor={chipNumberColor}/>
+          </div>
+          <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
+          
+          </div>
+        
 
     </React.Fragment>
   );
@@ -75,11 +90,11 @@ function IsPresent(props) {
 
   if(isPresent){
     return (
-      <AddRow mValue={'Närvarande'}/>
+      <InfoLabel text={'Närvarande'} bgColor={isPresentColor}/>
     );
   } else {
     return (
-      <AddRow mValue={'Frånvarande'}/>
+      <InfoLabel text={'Frånvarande'} bgColor={isNotPresentColor}/>
     );
 
   }
@@ -103,6 +118,24 @@ function ImageContainer() {
         <Container style={imageStyle}/>
     </React.Fragment>
   );
+}
+
+function Gender({ sex }){
+
+  switch(String(sex)){
+      case 'male':
+        return (
+          <InfoLabel text={convertToProperCase(sex)} bgColor={sexMaleColor}/>
+        );
+      case 'female':
+        return (
+          <InfoLabel text={convertToProperCase(sex)} bgColor={sexFemaleColor}/>
+        );
+      default:
+        return (
+          <InfoLabel text={'Not supplied'} bgColor={"#000000"}/>
+        );
+  };
 }
 
 export default ContainerMoreDogInfoOriginal;

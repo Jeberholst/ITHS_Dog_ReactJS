@@ -5,9 +5,7 @@ import ReactDOM from 'react-dom';
 import CallButton from './CallButton';
 // import MoreButton from './MoreButton';
 import InfoLabel from './InfoLabel';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import { makeStyles } from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -153,8 +151,6 @@ function InfoContainer(props) {
 
 }
 
-
-
 const MoreButton = (props) => {
 
   const classes = useStyles();
@@ -179,7 +175,6 @@ const MoreButton = (props) => {
 
   return(
       <React.Fragment>
-
 
         <IconButton 
           color="inherit" 
@@ -221,61 +216,6 @@ const MoreButton = (props) => {
 
 }
 
-const MoreButton2 = (props) => {
-
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = (boolean) => {
-    
-      if(boolean !== open){
-        setData(props)
-        setOpen(true);
-     }
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-  
-  return(
-      <React.Fragment>
-
-        <Button
-          className={classes.button} variant="contained" color="secondary" size="small"
-          onClick={() => handleClickOpen(true)}
-          startIcon={<MoreHorizOutlinedIcon/>}
-        >
-          More
-        </Button>
-
-          <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-        
-            <AppBar className={classes.appBar}>
-              <Toolbar>
-                <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-                  <CloseIcon />
-                </IconButton>
-                
-                <Typography variant="h6" className={classes.title}>
-                  Title
-                </Typography>
-
-              </Toolbar>
-            </AppBar>
-
-            <ContainerMoreDogInfoOriginal></ContainerMoreDogInfoOriginal>
-
-          </Dialog>
-         {/* <MoreInfoDialog fullScreen open={open} onClose={() => handleClose} TransitionComponent={Transition}></MoreInfoDialog> */}
-
-      </React.Fragment>
-
-  );
-
-}
-
-
 function Gender({ sex }){
 
   switch(String(sex)){
@@ -292,9 +232,6 @@ function Gender({ sex }){
           <InfoLabel text={'Not supplied'} bgColor={"#000000"}/>
         );
   };
-
-
-
 }
 
 export default ButtonDisplayRegistrarData
