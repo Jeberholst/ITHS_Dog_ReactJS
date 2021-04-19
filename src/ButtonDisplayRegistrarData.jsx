@@ -1,17 +1,9 @@
 import React from 'react'
-import { Button, Container, Dialog, Paper, Slide, Table, TableBody, TableCell, TableRow, IconButton, DialogContent, DialogTitle, DialogActions } from '@material-ui/core';
-import { dogDataRows, convertToProperCase, setData, selectedDog } from './DataFetcher';
+import { Button, Container, Paper, Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+import { dogDataRows, convertToProperCase } from './DataFetcher';
 import ReactDOM from 'react-dom';
 import CallButton from './CallButton';
-// import MoreButton from './MoreButton';
 import InfoLabel from './InfoLabel';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import ContainerMoreDogInfoOriginal from './ContainerMoreDogInfoOriginal';
-import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
 import MoreButtonNew from './MoreButtonNew'
 
 const breedColor = '#8EA4AA'
@@ -211,7 +203,7 @@ function InfoContainer(props) {
 
 
 //           <DialogContent>
-//             <ContainerMoreDogInfoOriginal></ContainerMoreDogInfoOriginal>
+//            
 //           </DialogContent>
 
     

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Paper } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { selectedDog, convertToProperCase } from './DataFetcher';
 import InfoLabel from './InfoLabel';
 
