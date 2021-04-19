@@ -12,8 +12,11 @@ const sexMaleColor = '#74777C'
 const sexFemaleColor = '#B299AD'
 
 const cardStyle = {
+  display: 'tableCell',
   width: 300,
-  height: "100%",
+  height: 200,
+  minWidth: 300,
+  minHeight: 200,
   padding: 20,
   marginBottom: 5,
 };
@@ -52,28 +55,11 @@ const trActionStyle = {
   height: "fit-content",
 };
 
-// const Transition = React.forwardRef(function Transition(props, ref) {
-//   return <Slide direction="up" ref={ref} {...props} />;
-// });
-
-// const useStyles = makeStyles((theme) => ({
-//   appBar: {
-//     position: 'relative',
-//     marginBottom: 15,
-//     backgroundColor: '#282c34'
-//   },
-//   title: {
-//     marginLeft: theme.spacing(0),
-//     flex: 1,
-//   },
-//   button: {
-//     margin: theme.spacing(1),
-//   },
-// }));
-
 const ButtonDisplayRegistrarData = () => {
   return (
-    <Button variant="contained" color="primary" onClick={displayData}>Fetch registrar</Button>
+    <React.Fragment>
+      <Button variant="contained" color="primary" onClick={displayData}>Fetch registrar</Button>
+    </React.Fragment>
   )
 }
 
@@ -85,9 +71,11 @@ function displayData() {
 function CreateTable() {
   return (
     <React.Fragment>
-      {dogDataRows.map((row) => (
-        <Card key={row.name} row={row} />
-      ))}
+      <Container className='card-grid-container'>
+        {dogDataRows.map((row) => (
+            <Card key={row.name} row={row} />
+        ))}
+      </Container>
     </React.Fragment>
   );
 }
@@ -95,9 +83,9 @@ function CreateTable() {
 function Card(props) {
   return (
     <React.Fragment>
-      <Container className='card-container' style={cardStyle} component={Paper}>
-        <InfoContainer props={props} />
-      </Container>
+        <Container className='card-container' style={cardStyle} component={Paper}>
+            <InfoContainer props={props} />
+        </Container>
     </React.Fragment>
   );
 }
@@ -149,71 +137,6 @@ function InfoContainer(props) {
   );
 
 }
-
-// const MoreButton = (props) => {
-
-//   const classes = useStyles();
-//   const [open, setOpen] = React.useState(false);
-//   const [currentDogName, setDogName] = React.useState('Title');
-
-//   const handleClickOpen = (boolean) => {
-    
-//       if(boolean !== open){
-//         setData(props)
-//         setOpen(true);
-//      }
-//   };
-
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
-
-//   const handleDogName = (name) => {
-//     setDogName(name);
-//   };
-
-//   return(
-//       <React.Fragment>
-
-//         <IconButton 
-//           color="inherit" 
-//           onClick={ function() {
-//               handleClickOpen(true)
-//               handleDogName(props.props.name)
-//             }
-//           }
-//           >
-//           <MoreHorizOutlinedIcon/>
-//         </IconButton>
-
-//         <Dialog open={open} onClose={handleClose} TransitionComponent={Transition}>
-//         <AppBar className={classes.appBar}>
-//               <Toolbar>
-          
-//                 <Typography variant="h6" className={classes.title}>
-//                   {currentDogName}
-//                 </Typography>
-
-//                 <IconButton edge="end" color="inherit" onClick={handleClose} aria-label="close">
-//                   <CloseIcon />
-//                 </IconButton>
-
-//               </Toolbar>
-//             </AppBar>
-
-
-//           <DialogContent>
-//            
-//           </DialogContent>
-
-    
-//       </Dialog>
-
-//       </React.Fragment>
-
-//   );
-
-// }
 
 function Gender({ sex }){
 

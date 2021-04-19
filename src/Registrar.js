@@ -8,7 +8,7 @@ class Registrar extends Component {
 
                <h1>Registrar</h1>
                <ButtonDisplayRegistrarData/>
-               <div id="dog-info"/>
+               <div className="class-dog-info" id="dog-info"/>
 
         </React.Fragment>
   
