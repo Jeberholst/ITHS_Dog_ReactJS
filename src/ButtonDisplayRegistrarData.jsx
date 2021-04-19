@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import ContainerMoreDogInfoOriginal from './ContainerMoreDogInfoOriginal';
 import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
+import MoreButtonNew from './MoreButtonNew'
 
 const breedColor = '#8EA4AA'
 const ageColor = '#93A99E'
@@ -53,24 +54,30 @@ const trOwnerStyle = {
   fontStyle: 'italic',
 };
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+const trActionStyle = {
+  display: 'inline',
+  width: '100%',
+  height: "fit-content",
+};
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: 'relative',
-    marginBottom: 15,
-    backgroundColor: '#282c34'
-  },
-  title: {
-    marginLeft: theme.spacing(0),
-    flex: 1,
-  },
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="up" ref={ref} {...props} />;
+// });
+
+// const useStyles = makeStyles((theme) => ({
+//   appBar: {
+//     position: 'relative',
+//     marginBottom: 15,
+//     backgroundColor: '#282c34'
+//   },
+//   title: {
+//     marginLeft: theme.spacing(0),
+//     flex: 1,
+//   },
+//   button: {
+//     margin: theme.spacing(1),
+//   },
+// }));
 
 const ButtonDisplayRegistrarData = () => {
   return (
@@ -121,9 +128,9 @@ function InfoContainer(props) {
               {dogOwnerInfo}
             </TableRow>
 
-            <TableRow style={trOwnerStyle}>
+            <TableRow style={trActionStyle}>
               <CallButton phoneNumber={row.ownerPhoneNumber}/>
-              <MoreButton props={row} />
+              <MoreButtonNew dialogData={row} />  
             </TableRow>
             
             <TableRow>
@@ -151,70 +158,70 @@ function InfoContainer(props) {
 
 }
 
-const MoreButton = (props) => {
+// const MoreButton = (props) => {
 
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [currentDogName, setDogName] = React.useState('Title');
+//   const classes = useStyles();
+//   const [open, setOpen] = React.useState(false);
+//   const [currentDogName, setDogName] = React.useState('Title');
 
-  const handleClickOpen = (boolean) => {
+//   const handleClickOpen = (boolean) => {
     
-      if(boolean !== open){
-        setData(props)
-        setOpen(true);
-     }
-  };
+//       if(boolean !== open){
+//         setData(props)
+//         setOpen(true);
+//      }
+//   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+//   const handleClose = () => {
+//     setOpen(false);
+//   };
 
-  const handleDogName = (name) => {
-    setDogName(name);
-  };
+//   const handleDogName = (name) => {
+//     setDogName(name);
+//   };
 
-  return(
-      <React.Fragment>
+//   return(
+//       <React.Fragment>
 
-        <IconButton 
-          color="inherit" 
-          onClick={ function() {
-              handleClickOpen(true)
-              handleDogName(props.props.name)
-            }
-          }
-          >
-          <MoreHorizOutlinedIcon/>
-        </IconButton>
+//         <IconButton 
+//           color="inherit" 
+//           onClick={ function() {
+//               handleClickOpen(true)
+//               handleDogName(props.props.name)
+//             }
+//           }
+//           >
+//           <MoreHorizOutlinedIcon/>
+//         </IconButton>
 
-        <Dialog open={open} onClose={handleClose} TransitionComponent={Transition}>
-        <AppBar className={classes.appBar}>
-              <Toolbar>
+//         <Dialog open={open} onClose={handleClose} TransitionComponent={Transition}>
+//         <AppBar className={classes.appBar}>
+//               <Toolbar>
           
-                <Typography variant="h6" className={classes.title}>
-                  {currentDogName}
-                </Typography>
+//                 <Typography variant="h6" className={classes.title}>
+//                   {currentDogName}
+//                 </Typography>
 
-                <IconButton edge="end" color="inherit" onClick={handleClose} aria-label="close">
-                  <CloseIcon />
-                </IconButton>
+//                 <IconButton edge="end" color="inherit" onClick={handleClose} aria-label="close">
+//                   <CloseIcon />
+//                 </IconButton>
 
-              </Toolbar>
-            </AppBar>
+//               </Toolbar>
+//             </AppBar>
 
 
-          <DialogContent>
-            <ContainerMoreDogInfoOriginal></ContainerMoreDogInfoOriginal>
-          </DialogContent>
+//           <DialogContent>
+//             <ContainerMoreDogInfoOriginal></ContainerMoreDogInfoOriginal>
+//           </DialogContent>
 
     
-      </Dialog>
+//       </Dialog>
 
-      </React.Fragment>
+//       </React.Fragment>
 
-  );
+//   );
 
-}
+// }
 
 function Gender({ sex }){
 

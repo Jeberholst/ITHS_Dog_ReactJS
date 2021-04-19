@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from '@material-ui/core';
+import { Container, Paper } from '@material-ui/core';
 import { selectedDog, convertToProperCase } from './DataFetcher';
 import InfoLabel from './InfoLabel';
 
@@ -19,15 +19,17 @@ const cardStyle = {
   marginBottom: 5,
 };
 
-const ContainerMoreDogInfoOriginal = () => {
+const MoreDogInfoContainer = () => {
+
+    console.log(selectedDog)
 
     return(
       <React.Fragment>
         <CreateContainer></CreateContainer>
       </React.Fragment>
     )
-}
 
+}
 
 function CreateContainer() {
 
@@ -43,21 +45,21 @@ function CreateContainer() {
 
 function InfoContainer(){
 
-  const dogOwnerInfo = convertToProperCase(selectedDog.props.ownerName) + ' ' + convertToProperCase(selectedDog.props.ownerLastName)
+  const dogOwnerInfo = convertToProperCase(selectedDog.ownerName) + ' ' + convertToProperCase(selectedDog.ownerLastName)
 
   return (
     <React.Fragment>
           <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
-              <InfoLabel text={convertToProperCase(selectedDog.props.breed)} bgColor={breedColor}/>
-              <InfoLabel text={convertToProperCase(selectedDog.props.age)  + ' år'} bgColor={ageColor}/>
-              <Gender sex={selectedDog.props.sex}/>
-              <IsPresent present={selectedDog.props.present}/>
+              <InfoLabel text={convertToProperCase(selectedDog.breed)} bgColor={breedColor}/>
+              <InfoLabel text={convertToProperCase(selectedDog.age)  + ' år'} bgColor={ageColor}/>
+              <Gender sex={selectedDog.sex}/>
+              <IsPresent present={selectedDog.present}/>
           </div>
 
           <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
-              <InfoLabel text={selectedDog.props.chipNumber} bgColor={chipNumberColor}/>
+              <InfoLabel text={selectedDog.chipNumber} bgColor={chipNumberColor}/>
               <InfoLabel text={dogOwnerInfo} bgColor={chipNumberColor}/>
-              <InfoLabel text={selectedDog.props.ownerPhoneNumber} bgColor={chipNumberColor}/>
+              <InfoLabel text={selectedDog.ownerPhoneNumber} bgColor={chipNumberColor}/>
           </div>
           <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
           
@@ -67,6 +69,7 @@ function InfoContainer(){
     </React.Fragment>
   );
 
+      
 }
 
 function IsPresent(props) {
@@ -90,7 +93,7 @@ function ImageContainer() {
   const imageStyle = {
     width: "100%",
     height: 300,
-    backgroundImage: `url(${selectedDog.props.img})`,
+    backgroundImage: `url(${selectedDog.img})`,
     borderRadius: 5,
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat"
@@ -121,5 +124,5 @@ function Gender({ sex }){
   };
 }
 
-export default ContainerMoreDogInfoOriginal;
+export default MoreDogInfoContainer;
 

@@ -6,8 +6,6 @@ import WelcomeScreen from './WelcomeScreen';
 import { Button, ButtonGroup } from '@material-ui/core';
 import ReactDOM from 'react-dom'
 import { fakeFetchData } from './DataFetcher'
-import ContainerMoreDogInfo from './ContainerMoreDogInfoOriginal';
-
 
 function App() {
   return (
@@ -27,7 +25,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={WelcomeScreen}/>
                     <Route exact path="/Registrar" component={Registrar}/>
-                    <Route exact path="/DogInfo" component={ContainerMoreDogInfo}/>
+                    {/* <Route exact path="/DogInfo" component={ContainerMoreDogInfo}/> */}
                 </Switch>
             </Router>
           </div>
