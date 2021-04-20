@@ -6,9 +6,10 @@ class Registrar extends Component {
     return (
         <React.Fragment>
 
-               <h1>Registrar</h1>
-               <ButtonDisplayRegistrarData/>
-               <div className="class-dog-info" id="dog-info"/>
+               {/* <h1>Registrar</h1> */}
+               {/* <div className="class-dog-info" id="dog-info"/> */}
+               <ButtonDisplayRegistrarData></ButtonDisplayRegistrarData>
+
 
         </React.Fragment>
   

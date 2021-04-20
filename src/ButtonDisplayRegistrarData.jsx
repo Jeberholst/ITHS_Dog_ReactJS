@@ -1,15 +1,11 @@
 import React from 'react'
-import { Button, Container, Paper, Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+import { Button, Container, Paper, Table, TableBody, TableCell, TableRow, Divider, Slide, RootRef } from '@material-ui/core';
 import { dogDataRows, convertToProperCase } from './DataFetcher';
 import ReactDOM from 'react-dom';
 import CallButton from './CallButton';
 import InfoLabel from './InfoLabel';
 import MoreButtonNew from './MoreButtonNew'
-
-const breedColor = '#8EA4AA'
-const ageColor = '#93A99E'
-const sexMaleColor = '#74777C'
-const sexFemaleColor = '#B299AD'
+import * as Colors from './ColorConstants'
 
 const cardStyle = {
   display: 'tableCell',
@@ -17,9 +13,12 @@ const cardStyle = {
   height: 200,
   minWidth: 300,
   minHeight: 200,
-  padding: 20,
   marginBottom: 5,
 };
+
+const tableStyle = {
+   borderBottom: 'none',
+}
 
 const tcDogNameStyle = {
   display: 'inline',
@@ -45,6 +44,7 @@ const tcDogInfoStyle = {
 const trOwnerStyle = {
   width: '100%',
   height: "fit-content",
+  paddingTop: 10,
   fontSize: 22,
   fontStyle: 'italic',
 };
@@ -58,22 +58,18 @@ const trActionStyle = {
 const ButtonDisplayRegistrarData = () => {
   return (
     <React.Fragment>
-      <Button variant="contained" color="primary" onClick={displayData}>Fetch registrar</Button>
+      <CreateTable></CreateTable>
+      {/* <Button variant="contained" color="primary" onClick={displayData}>Fetch registrar</Button> */}
     </React.Fragment>
   )
 }
 
-function displayData() {
-  const element = document.getElementById('dog-info')
-  ReactDOM.render((CreateTable()), element)
-}
-
-function CreateTable() {
+const CreateTable = () => {
   return (
     <React.Fragment>
       <Container className='card-grid-container'>
         {dogDataRows.map((row) => (
-            <Card key={row.name} row={row} />
+            <Card className='card-owner' key={row.name} row={row}/>
         ))}
       </Container>
     </React.Fragment>
@@ -84,11 +80,13 @@ function Card(props) {
   return (
     <React.Fragment>
         <Container className='card-container' style={cardStyle} component={Paper}>
-            <InfoContainer props={props} />
+            <InfoContainer props={props}  />
         </Container>
     </React.Fragment>
   );
 }
+
+
 
 function InfoContainer(props) {
   const { row } = props.props;
@@ -99,14 +97,16 @@ function InfoContainer(props) {
 
   return (
     <React.Fragment>
-      <div className="owner-info">
+      <div className="owner-info" >
 
-        <Table>
+        <Table style={tableStyle}>
           <TableBody>
 
+          
             <TableRow style={trOwnerStyle}>
               {dogOwnerInfo}
             </TableRow>
+            <Divider style={{marginTop: 10, marginBottom: 10}}></Divider>
 
             <TableRow style={trActionStyle}>
               <CallButton phoneNumber={row.ownerPhoneNumber}/>
@@ -122,8 +122,8 @@ function InfoContainer(props) {
             <TableRow>
               <TableCell style={tcDogInfoStyle}>
                 <Gender sex={row.sex}/>
-                <InfoLabel text={convertToProperCase(row.breed)} bgColor={breedColor}/>
-                <InfoLabel text={convertToProperCase(row.age)  + ' år'} bgColor={ageColor}/>
+                <InfoLabel text={convertToProperCase(row.breed)} bgColor={Colors.breedColor}/>
+                <InfoLabel text={convertToProperCase(row.age)  + ' år'} bgColor={Colors.ageColor}/>
               </TableCell>
             </TableRow>
 
@@ -139,15 +139,15 @@ function InfoContainer(props) {
 }
 
 function Gender({ sex }){
-
+  
   switch(String(sex)){
       case 'male':
         return (
-          <InfoLabel text={convertToProperCase(sex)} bgColor={sexMaleColor}/>
+          <InfoLabel text={convertToProperCase(sex)} bgColor={Colors.sexMaleColor}/>
         );
       case 'female':
         return (
-          <InfoLabel text={convertToProperCase(sex)} bgColor={sexFemaleColor}/>
+          <InfoLabel text={convertToProperCase(sex)} bgColor={Colors.sexFemaleColor}/>
         );
       default:
         return (

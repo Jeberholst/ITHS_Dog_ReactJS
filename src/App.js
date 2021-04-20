@@ -8,15 +8,19 @@ import ReactDOM from 'react-dom'
 import { fakeFetchData } from './DataFetcher'
 
 function App() {
+  fakeFetchData()
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+      </header>
+      <body>
 
-        <div>
+      <div className={'app-content-button-bar'}>
           <ButtonGroup variant="contained" color="secondary" aria-label="contained secondary button group">
-            <Button onClick={RenderWelcomeScreen}>Welcome  Screen</Button>
-            <Button onClick={RenderRegistrar}>Registrar</Button>
+            {/* <Button onClick={RenderWelcomeScreen}>Welcome  Screen</Button> */}
+            {/* <Button onClick={RenderRegistrar}>Registrar</Button> */}
             {/* <Button onClick={RenderListOfDogs}>List of dogs</Button> */}
           </ButtonGroup>    
         </div>
@@ -30,7 +34,9 @@ function App() {
             </Router>
           </div>
           
-      </header>
+
+      </body>
+
     </div>
   );
 }

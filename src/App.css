@@ -1,3 +1,7 @@
+.root{
+  background-color: #282c34;
+}
+
 .App {
   text-align: center;
 }
@@ -28,55 +32,78 @@
   color: #61dafb;
 }
 
+.App-content-view {
+  background: #282c34;
+}
+
 .class-dog-info {
   padding: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
-  background: turquoise;
+  background: #282c34;
 }
 
-
-@media screen and (min-width: 1250px) {
-  .card-grid-container {
-    display: flex;
-    column-count: 4;
-    padding-top: 10px;
-    width: 100%;
-    height: 100%;
-    gap: 10px;
-    background-color: orange;
-  }
+.owner-info {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-@media screen and (min-width: 992px) and (max-width: 1249px) {
+.app-content-view {
+  background-color: #282c34;
+}
+
+.card-grid-container {
+  display: grid;
+  width: 100%;
+  gap: 1em;
+  animation: slideInWithAnim ease 2s;
+}
+
+@media screen and (min-width: 992px) {
   .card-grid-container {
-    display: flex;
     columns: 3;
-    width: 100%;
-    gap: 10px;
-    overflow: visible;
     /* background-color: red; */
   }
 }
 
 @media screen and (min-width: 625px) and (max-width: 991px) {
   .card-grid-container {
-    display: flex;
     columns: 2;
-    width: 100%;
     /* background-color: green; */
   }
 }
 
 @media screen and (min-width: 600px) and (max-width: 625px) {
   .card-grid-container {
-    display: flex;
     columns: 1;
-    width: 100%;
-    gap: 10px;
     /* background-color: blue; */
   }
 }
+
+.card-grid-container  {
+  transform: translateX(10px);
+}
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
+}
+
+@keyframes slideInWithAnim {
+  0% {
+      opacity: 0;
+      transform: translateX(-100px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0px);
+  }
+}
+
 
 /* @keyframes App-logo-spin {
   from {
