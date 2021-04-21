@@ -5,6 +5,7 @@ import CallButton from '../Registrar/CallButton';
 import InfoLabel from '../InfoLabel';
 import MoreButton from '../ComponentsMore/MoreButton'
 import * as Colors from '../ColorConstants'
+import './Register.css'
 
 const cardStyle = {
   display: 'tableCell',
@@ -18,41 +19,6 @@ const cardStyle = {
 const tableStyle = {
    borderBottom: 'none',
 }
-
-const tcDogNameStyle = {
-  display: 'inline',
-  width: "100%",
-  height: "100%",
-  padding: 10,
-  marginBottom: 15,
-  background: "#ffffff",
-  borderBottom: 'unset',
-  fontSize: 18,
-};
-
-const tcDogInfoStyle = {
-  display: 'inline',
-  width: "100%",
-  height: 'fit-content',
-  fontSize: 12,
-  padding: 5,
-  marginBottom: 5,
-  borderBottom: 'unset',
-};
-
-const trOwnerStyle = {
-  width: '100%',
-  height: "fit-content",
-  paddingTop: 10,
-  fontSize: 22,
-  fontStyle: 'italic',
-};
-
-const trActionStyle = {
-  display: 'inline',
-  width: '100%',
-  height: "fit-content",
-};
 
 const RegistrarData = () => {
   return (
@@ -98,24 +64,24 @@ function InfoContainer(props) {
         <Table style={tableStyle}>
           <TableBody>
 
-            <TableRow style={trOwnerStyle}>
+            <TableRow className="ic-owner">
               {dogOwnerInfo}
             </TableRow>
             <Divider style={{marginTop: 10, marginBottom: 10}}></Divider>
 
-            <TableRow style={trActionStyle}>
+            <TableRow className="ic-action">
               <CallButton phoneNumber={row.ownerPhoneNumber}/>
               <MoreButton dialogData={row} />  
             </TableRow>
             
-            <TableRow>
-              <TableCell style={tcDogNameStyle}>
+            <TableRow className="ic-dog-name">
+              <TableCell>
                 {convertToProperCase(row.name)}
               </TableCell>
             </TableRow>
 
-            <TableRow>
-              <TableCell style={tcDogInfoStyle}>
+            <TableRow className="ic-dog-info">
+              <TableCell>
                 <Gender sex={row.sex}/>
                 <InfoLabel text={convertToProperCase(row.breed)} bgColor={Colors.breedColor}/>
                 <InfoLabel text={convertToProperCase(row.age)  + ' år'} bgColor={Colors.ageColor}/>

@@ -2,22 +2,8 @@ import React from 'react'
 import { Container } from '@material-ui/core';
 import { selectedDog, convertToProperCase } from '../DataFetcher';
 import InfoLabel from '../InfoLabel';
-
-const breedColor = '#8EA4AA'
-const ageColor = '#93A99E'
-const sexMaleColor = '#74777C'
-const sexFemaleColor = '#B299AD'
-const chipNumberColor = '#2d2d2d'
-const isPresentColor = '#4D9861'
-const isNotPresentColor = '#969492'
-
-const cardStyle = {
-  width: 400,
-  height: 'fit-content',
-  padding: 5,
-  paddingTop: 15,
-  marginBottom: 5,
-};
+import './MoreInfo.css'
+import * as Colors from '../ColorConstants'
 
 const MoreDogInfoContainer = () => {
 
@@ -25,7 +11,7 @@ const MoreDogInfoContainer = () => {
 
     return(
       <React.Fragment>
-        <CreateContainer></CreateContainer>
+        <CreateContainer className="card-style"></CreateContainer>
       </React.Fragment>
     )
 
@@ -35,7 +21,7 @@ function CreateContainer() {
 
   return (
     <React.Fragment>
-        <Container className='card-container' style={cardStyle}>
+        <Container className="card-container">
             <ImageContainer/>
             <InfoContainer/>
        </Container>
@@ -49,17 +35,17 @@ function InfoContainer(){
 
   return (
     <React.Fragment>
-          <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
-              <InfoLabel text={convertToProperCase(selectedDog.breed)} bgColor={breedColor}/>
-              <InfoLabel text={convertToProperCase(selectedDog.age)  + ' år'} bgColor={ageColor}/>
+          <div className="mdic-row">
+              <InfoLabel text={convertToProperCase(selectedDog.breed)} bgColor={Colors.breedColor}/>
+              <InfoLabel text={convertToProperCase(selectedDog.age)  + ' år'} bgColor={Colors.ageColor}/>
               <Gender sex={selectedDog.sex}/>
               <IsPresent present={selectedDog.present}/>
           </div>
 
-          <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
-              <InfoLabel text={selectedDog.chipNumber} bgColor={chipNumberColor}/>
-              <InfoLabel text={dogOwnerInfo} bgColor={chipNumberColor}/>
-              <InfoLabel text={selectedDog.ownerPhoneNumber} bgColor={chipNumberColor}/>
+          <div className="mdic-row">
+              <InfoLabel text={selectedDog.chipNumber} bgColor={Colors.chipNumberColor}/>
+              <InfoLabel text={dogOwnerInfo} bgColor={Colors.chipNumberColor}/>
+              <InfoLabel text={selectedDog.ownerPhoneNumber} bgColor={Colors.chipNumberColor}/>
           </div>
           <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
           
@@ -77,11 +63,11 @@ function IsPresent(props) {
 
   if(isPresent){
     return (
-      <InfoLabel text={'Närvarande'} bgColor={isPresentColor}/>
+      <InfoLabel text={'Närvarande'} bgColor={Colors.isPresentColor}/>
     );
   } else {
     return (
-      <InfoLabel text={'Frånvarande'} bgColor={isNotPresentColor}/>
+      <InfoLabel text={'Frånvarande'} bgColor={Colors.isNotPresentColor}/>
     );
 
   }
@@ -96,7 +82,7 @@ function ImageContainer() {
     backgroundImage: `url(${selectedDog.img})`,
     borderRadius: 5,
     backgroundPosition: "center center",
-    backgroundRepeat: "no-repeat"
+    backgroundRepeat: "no-repeat",
   };
 
   return (
@@ -111,11 +97,11 @@ function Gender({ sex }){
   switch(String(sex)){
       case 'male':
         return (
-          <InfoLabel text={convertToProperCase(sex)} bgColor={sexMaleColor}/>
+          <InfoLabel text={convertToProperCase(sex)} bgColor={Colors.sexMaleColor}/>
         );
       case 'female':
         return (
-          <InfoLabel text={convertToProperCase(sex)} bgColor={sexFemaleColor}/>
+          <InfoLabel text={convertToProperCase(sex)} bgColor={Colors.sexFemaleColor}/>
         );
       default:
         return (

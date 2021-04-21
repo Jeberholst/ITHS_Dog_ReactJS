@@ -80,9 +80,9 @@
   }
 }
 
-.card-grid-container  {
+/* .card-grid-container  {
   transform: translateX(10px);
-}
+} */
 
 @keyframes fadeInAnimation {
   0% {
