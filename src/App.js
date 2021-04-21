@@ -3,8 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Registrar from './Registrar'
 import WelcomeScreen from './WelcomeScreen';
-import { Button, ButtonGroup } from '@material-ui/core';
-import ReactDOM from 'react-dom'
+import { ButtonGroup } from '@material-ui/core';
 import { fakeFetchData } from './DataFetcher'
 
 function App() {
@@ -29,7 +28,6 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={WelcomeScreen}/>
                     <Route exact path="/Registrar" component={Registrar}/>
-                    {/* <Route exact path="/DogInfo" component={ContainerMoreDogInfo}/> */}
                 </Switch>
             </Router>
           </div>
@@ -40,25 +38,5 @@ function App() {
     </div>
   );
 }
-
-function RenderWelcomeScreen() {
-  const root = document.getElementById('app-content-view')
-  document.title = 'Welcome Screen'
-  fakeFetchData()
-  ReactDOM.render(<WelcomeScreen/>, root)
-}
-
-function RenderRegistrar() {
-  const root = document.getElementById('app-content-view')
-  document.title = 'Owner registrar'
-  ReactDOM.render(<Registrar/>, root)
-}
-
-// function RenderListOfDogs() {
-//   const root = document.getElementById('app-content-view')
-//   document.title = 'Dog registrar'
-//   ReactDOM.render(<DogInfo/>, root)
-// }
-
 
 export default App;

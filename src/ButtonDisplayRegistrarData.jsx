@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button, Container, Paper, Table, TableBody, TableCell, TableRow, Divider, Slide, RootRef } from '@material-ui/core';
+import { Container, Paper, Table, TableBody, TableCell, TableRow, Divider, Slide, RootRef } from '@material-ui/core';
 import { dogDataRows, convertToProperCase } from './DataFetcher';
-import ReactDOM from 'react-dom';
 import CallButton from './CallButton';
 import InfoLabel from './InfoLabel';
 import MoreButtonNew from './MoreButtonNew'
@@ -59,7 +58,6 @@ const ButtonDisplayRegistrarData = () => {
   return (
     <React.Fragment>
       <CreateTable></CreateTable>
-      {/* <Button variant="contained" color="primary" onClick={displayData}>Fetch registrar</Button> */}
     </React.Fragment>
   )
 }
