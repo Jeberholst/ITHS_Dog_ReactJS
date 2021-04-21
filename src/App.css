@@ -59,6 +59,63 @@
   animation: slideInWithAnim ease 2s;
 }
 
+.welcome-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.woff-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 80px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100%; 
+  width: fit-content;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+}
+
+.woff-container p {
+  width: fit-content;
+  height: fit-content;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  font-size: small;
+  font-family: fantasy;
+}
+
+.woff-container :nth-child(2) {
+  font-size: medium;
+}
+
+.woff-container :nth-child(3) {
+  font-size: large;
+}
+
+.welcome-warning-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.welcome-warning-container h1 {
+  color: white;
+  background: rgb(148, 68, 68);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
 @media screen and (min-width: 992px) {
   .card-grid-container {
     columns: 3;

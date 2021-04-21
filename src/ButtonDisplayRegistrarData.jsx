@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Paper, Table, TableBody, TableCell, TableRow, Divider, Slide, RootRef } from '@material-ui/core';
+import { Container, Paper, Table, TableBody, TableCell, TableRow, Divider } from '@material-ui/core';
 import { dogDataRows, convertToProperCase } from './DataFetcher';
 import CallButton from './CallButton';
 import InfoLabel from './InfoLabel';

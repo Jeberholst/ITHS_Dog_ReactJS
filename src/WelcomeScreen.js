@@ -1,19 +1,18 @@
 import { Button, Zoom } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import Registrar from './Registrar'
-import ReactDOM from 'react-dom'
+import './App.css';
+import ReactDOM from 'react-dom';
+import Registrar from './Registrar';
 
 const WelcomeScreen = () => {
 
   return (
       <React.Fragment>
-
-              <h1>Welcome</h1>
-              <h2>Now loading...</h2>
-              <DelayedAnimWarning></DelayedAnimWarning>
-              <DelayedAnimWoff></DelayedAnimWoff>
-              <DelayedButton></DelayedButton>
-
+        <div className='welcome-main-container'>
+            <DelayedAnimWarning></DelayedAnimWarning>
+            <DelayedWoffs></DelayedWoffs>
+            <DelayedButton></DelayedButton>
+        </div>
       </React.Fragment>
 
   );
@@ -34,10 +33,11 @@ const DelayedAnimWarning = () => {
      
         <React.Fragment>
           <Zoom in={true}>
-            <div>
+            <div className="welcome-warning-container">
               <h1>Warning</h1>
-              <h2>Beware of dogs!</h2>
+              <h2>Beware of dogs</h2>
             </div>
+
           </Zoom>
         </React.Fragment>
     
@@ -48,34 +48,55 @@ const DelayedAnimWarning = () => {
 
 }
 
-const DelayedAnimWoff = () => {
+const DelayedWoffs = () => {
+    
+    const [show, setShow] = useState(false)
+    useEffect(() => {
+        setTimeout(() => {
+          setShow(true)
+        }, 1500)
+      }, [show])
 
-  const [show, setShow] = useState(false)
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShow(true)
-    }, 1500)
-  }, [show])
-
-  if (show) {
-    return(
-      <React.Fragment>
-        <div style={{display: 'inline', width: 200}}>
-            <Zoom in={true}>
-              <h1>Woff</h1>
-            </Zoom>
-            <DelayedAnimWoffSecond></DelayedAnimWoffSecond>
-            <DelayedAnimWoffThird></DelayedAnimWoffThird>
-          
-         </div>
-      </React.Fragment>
-    )
-  }
-  else {
-    return null
-  }
+      if (show) {
+        return(
+          <React.Fragment>
+                <div className="woff-container">
+                    <DelayedAnimWoffFirst></DelayedAnimWoffFirst>
+                    <DelayedAnimWoffSecond></DelayedAnimWoffSecond>
+                    <DelayedAnimWoffThird></DelayedAnimWoffThird>
+                </div>
+          </React.Fragment>
+        )
+      }
+      else {
+        return null
+      }
 }
+
+
+const DelayedAnimWoffFirst = () => {
+
+    const [show, setShow] = useState(false)
+  
+    useEffect(() => {
+      setTimeout(() => {
+        setShow(true)
+      }, 250)
+    }, [show])
+  
+    if (show) {
+      return(
+        <React.Fragment>
+              <Zoom in={true}>
+                <p>Woff</p>
+            </Zoom>  
+        </React.Fragment>
+      )
+    }
+    else {
+      return null
+    }
+  }
 
 const DelayedAnimWoffSecond = () => {
 
@@ -84,14 +105,14 @@ const DelayedAnimWoffSecond = () => {
   useEffect(() => {
     setTimeout(() => {
       setShow(true)
-    }, 250)
+    }, 500)
   }, [show])
 
   if (show) {
     return(
       <React.Fragment>
             <Zoom in={true}>
-              <h1>Woff</h1>
+              <p>Woff</p>
             </Zoom>  
       </React.Fragment>
     )
@@ -108,15 +129,15 @@ const DelayedAnimWoffThird = () => {
   useEffect(() => {
     setTimeout(() => {
       setShow(true)
-    }, 500)
+    }, 750)
   }, [show])
 
   if (show) {
     return(
       <React.Fragment>
           <Zoom in={true}>
-            <h1>Woff</h1>
-          </Zoom>
+            <p>Woff</p>
+            </Zoom>
       </React.Fragment>
     )
   }
@@ -139,7 +160,7 @@ const DelayedButton = () => {
     return(
       <React.Fragment>
         <Zoom in={true}>
-          <Button variant="contained" color="secondary" onClick={RenderRegistrar}>Go to register</Button>
+          <Button variant="contained" color="secondary" style={{marginTop: 40}} onClick={RenderRegistrar}>Go to register</Button>
         </Zoom>
       </React.Fragment>
     )
@@ -149,14 +170,11 @@ const DelayedButton = () => {
 
 }
 
-
 function RenderRegistrar() {
-
   const root = document.getElementById('app-content-view')
-  document.title = 'Owner registrar'
+  document.title = 'Owner registry'
   ReactDOM.render(<Registrar/>, root)
 
 }
 
-
-export default WelcomeScreen;
+export default WelcomeScreen
