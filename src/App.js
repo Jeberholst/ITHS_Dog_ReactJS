@@ -1,9 +1,9 @@
-import logo from './dog.svg';
+import logo from './ImagesAndIcons/dog.svg';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Registrar from './Registrar'
-import WelcomeScreen from './WelcomeScreen';
-import { fakeFetchData } from './DataFetcher'
+import Registrar from './Registrar/Registrar'
+import WelcomeScreen from './WelcomeScreen/WelcomeScreen';
+import { fakeFetchData } from './DataFetcher';
 
 function App() {
   fakeFetchData()

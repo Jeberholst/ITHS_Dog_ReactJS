@@ -1,8 +1,9 @@
 import { Button, Zoom } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import '../App.css';
 import ReactDOM from 'react-dom';
-import Registrar from './Registrar';
+import Registrar from '../Registrar/Registrar';
+import '../WelcomeScreen/WelcomeScreen.css'
 
 const WelcomeScreen = () => {
 
@@ -37,7 +38,6 @@ const DelayedAnimWarning = () => {
               <h1>Warning</h1>
               <h2>Beware of dogs</h2>
             </div>
-
           </Zoom>
         </React.Fragment>
     
@@ -60,11 +60,11 @@ const DelayedWoffs = () => {
       if (show) {
         return(
           <React.Fragment>
-                <div className="woff-container">
-                    <DelayedAnimWoffFirst></DelayedAnimWoffFirst>
-                    <DelayedAnimWoffSecond></DelayedAnimWoffSecond>
-                    <DelayedAnimWoffThird></DelayedAnimWoffThird>
-                </div>
+            <div className="woff-container">
+              <DelayedAnimWoffFirst></DelayedAnimWoffFirst>
+              <DelayedAnimWoffSecond></DelayedAnimWoffSecond>
+              <DelayedAnimWoffThird></DelayedAnimWoffThird>
+            </div>
           </React.Fragment>
         )
       }
@@ -160,7 +160,13 @@ const DelayedButton = () => {
     return(
       <React.Fragment>
         <Zoom in={true}>
-          <Button variant="contained" color="secondary" style={{marginTop: 40}} onClick={RenderRegistrar}>Go to register</Button>
+          <Button 
+          variant="contained" 
+          color="secondary" 
+          style={{marginTop: 40}} 
+          onClick={RenderRegistrar}>
+            Go to register
+            </Button>
         </Zoom>
       </React.Fragment>
     )

@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import { AppBar, DialogContent, Slide, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { selectedDog } from './DataFetcher';
+import { selectedDog } from '../DataFetcher';
 import MoreDogInfoContainer from './MoreDogInfoContainer';
 
 const useStyles = makeStyles((theme) => ({

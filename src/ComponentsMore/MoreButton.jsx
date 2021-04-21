@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IconButton } from '@material-ui/core';
 import MoreInfoDialog from './MoreInfoDialog';
 import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
-import { setData } from './DataFetcher';
+import { setData } from '../DataFetcher';
 
 const divStyle = {
   display: 'inline',
@@ -10,7 +10,7 @@ const divStyle = {
   height: "fit-content",
 };
 
-const MoreButtonNew = ({ dialogData }) => {
+const MoreButton = ({ dialogData }) => {
 
   const [shouldOpen, setIsOpen] = useState(false);
 
@@ -47,4 +47,4 @@ const MoreButtonNew = ({ dialogData }) => {
   );
 }
 
-export default MoreButtonNew;
+export default MoreButton;

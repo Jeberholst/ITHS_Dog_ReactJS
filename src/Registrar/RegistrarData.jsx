@@ -1,10 +1,10 @@
 import React from 'react'
 import { Container, Paper, Table, TableBody, TableCell, TableRow, Divider } from '@material-ui/core';
-import { dogDataRows, convertToProperCase } from './DataFetcher';
-import CallButton from './CallButton';
-import InfoLabel from './InfoLabel';
-import MoreButtonNew from './MoreButtonNew'
-import * as Colors from './ColorConstants'
+import { dogDataRows, convertToProperCase } from '../DataFetcher';
+import CallButton from '../Registrar/CallButton';
+import InfoLabel from '../InfoLabel';
+import MoreButton from '../ComponentsMore/MoreButton'
+import * as Colors from '../ColorConstants'
 
 const cardStyle = {
   display: 'tableCell',
@@ -54,7 +54,7 @@ const trActionStyle = {
   height: "fit-content",
 };
 
-const ButtonDisplayRegistrarData = () => {
+const RegistrarData = () => {
   return (
     <React.Fragment>
       <CreateTable></CreateTable>
@@ -84,8 +84,6 @@ function Card(props) {
   );
 }
 
-
-
 function InfoContainer(props) {
   const { row } = props.props;
 
@@ -95,12 +93,11 @@ function InfoContainer(props) {
 
   return (
     <React.Fragment>
-      <div className="owner-info" >
+      <div className="owner-info">
 
         <Table style={tableStyle}>
           <TableBody>
 
-          
             <TableRow style={trOwnerStyle}>
               {dogOwnerInfo}
             </TableRow>
@@ -108,7 +105,7 @@ function InfoContainer(props) {
 
             <TableRow style={trActionStyle}>
               <CallButton phoneNumber={row.ownerPhoneNumber}/>
-              <MoreButtonNew dialogData={row} />  
+              <MoreButton dialogData={row} />  
             </TableRow>
             
             <TableRow>
@@ -141,17 +138,26 @@ function Gender({ sex }){
   switch(String(sex)){
       case 'male':
         return (
-          <InfoLabel text={convertToProperCase(sex)} bgColor={Colors.sexMaleColor}/>
+          <InfoLabel 
+            text={convertToProperCase(sex)} 
+            bgColor={Colors.sexMaleColor}
+          />
         );
       case 'female':
         return (
-          <InfoLabel text={convertToProperCase(sex)} bgColor={Colors.sexFemaleColor}/>
+          <InfoLabel 
+            text={convertToProperCase(sex)} 
+            bgColor={Colors.sexFemaleColor}
+          />
         );
       default:
         return (
-          <InfoLabel text={'Not supplied'} bgColor={"#000000"}/>
+          <InfoLabel 
+            text={'Not supplied'} 
+            bgColor={"#000000"}
+          />
         );
   };
 }
 
-export default ButtonDisplayRegistrarData
+export default RegistrarData
