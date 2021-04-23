@@ -16,13 +16,14 @@ function App() {
       <body>
 
         <div id="app-content-view" className="App-content-view">
-            <Router>
-                <Switch>
-                    <Route exact path="/" component={WelcomeScreen}/>
-                    <Route exact path="/Registrar" component={Registrar}/>
-                </Switch>
-            </Router>
-          </div>
+          <Router>
+              <Switch>
+                  <Route exact path="/" component={WelcomeScreen}/>
+                  <Route exact path="/register/" component={Registrar}/>
+                  <Route exact path="/Registrar/:selectedsubdog" component={Registrar}/>
+              </Switch>
+          </Router>
+        </div>
           
 
       </body>

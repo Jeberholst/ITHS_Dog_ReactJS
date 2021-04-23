@@ -7,6 +7,7 @@ import { AppBar, DialogContent, Slide, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { selectedDog } from '../DataFetcher';
 import MoreDogInfoContainer from './MoreDogInfoContainer';
+import '../ComponentsMore/MoreInfo.css'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -33,16 +34,29 @@ const MoreInfoDialog = ({ openDialog, closeDialog }) => {
 
   return (
     <div> 
-        <Dialog onClose={closeDialog()} aria-labelledby="customized-dialog-title" open={openDialog} TransitionComponent={Transition}>
-        <AppBar className={classes.appBar}>
+        <Dialog 
+          className="more-info-dialog" 
+          onClose={closeDialog()} 
+          aria-labelledby="customized-dialog-title" 
+          open={openDialog} 
+          TransitionComponent={Transition}>
+        
+        <AppBar 
+          className={classes.appBar}>
                <Toolbar>
           
-                 <Typography variant="h6" className={classes.title}>
+                 <Typography 
+                  variant="h6" 
+                  className={classes.title}>
                    {selectedDog.name}              
                  </Typography>
 
-                 <IconButton edge="end" color="inherit" onClick={closeDialog()} aria-label="close">
-                  <CloseIcon />
+                 <IconButton 
+                  edge="end" 
+                  color="inherit" 
+                  onClick={closeDialog()} 
+                  aria-label="close">
+                    <CloseIcon />
                  </IconButton>
 
                </Toolbar> 
@@ -58,5 +72,6 @@ const MoreInfoDialog = ({ openDialog, closeDialog }) => {
     </div>
   );
 }
+
 
 export default MoreInfoDialog;

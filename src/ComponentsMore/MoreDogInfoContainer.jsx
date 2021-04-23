@@ -49,22 +49,21 @@ function InfoContainer(){
 
   return (
     <React.Fragment>
-          <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
+
+      <div className='info-container'>
+          <div className='info-container-row'>
               <InfoLabel text={convertToProperCase(selectedDog.breed)} bgColor={breedColor}/>
               <InfoLabel text={convertToProperCase(selectedDog.age)  + ' år'} bgColor={ageColor}/>
               <Gender sex={selectedDog.sex}/>
               <IsPresent present={selectedDog.present}/>
           </div>
 
-          <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
+          <div className='info-container-row'>
               <InfoLabel text={selectedDog.chipNumber} bgColor={chipNumberColor}/>
               <InfoLabel text={dogOwnerInfo} bgColor={chipNumberColor}/>
               <InfoLabel text={selectedDog.ownerPhoneNumber} bgColor={chipNumberColor}/>
           </div>
-          <div style={{marginTop: 15, marginBottom: 15, padding: 5}}>
-          
-          </div>
-        
+      </div>
 
     </React.Fragment>
   );
@@ -89,19 +88,9 @@ function IsPresent(props) {
 }
 
 function ImageContainer() {
-
-  const imageStyle = {
-    width: "100%",
-    height: 300,
-    backgroundImage: `url(${selectedDog.img})`,
-    borderRadius: 5,
-    backgroundPosition: "center center",
-    backgroundRepeat: "no-repeat"
-  };
-
   return (
     <React.Fragment>
-        <Container style={imageStyle}/>
+        <img className={'more-info-dialog-img'} src={selectedDog.img} alt={'dog'}/>
     </React.Fragment>
   );
 }

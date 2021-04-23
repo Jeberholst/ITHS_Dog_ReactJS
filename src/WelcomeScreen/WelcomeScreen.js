@@ -6,6 +6,7 @@ import Registrar from '../Registrar/Registrar';
 import '../WelcomeScreen/WelcomeScreen.css'
 
 const WelcomeScreen = () => {
+  document.title = 'Welcome Screen'
 
   return (
       <React.Fragment>
@@ -161,12 +162,12 @@ const DelayedButton = () => {
       <React.Fragment>
         <Zoom in={true}>
           <Button 
-          variant="contained" 
-          color="secondary" 
-          style={{marginTop: 40}} 
-          onClick={RenderRegistrar}>
-            Go to register
-            </Button>
+            variant="contained" 
+            color="secondary" 
+            style={{marginTop: 40}} 
+            onClick={RenderRegistrar}>
+              Go to register
+          </Button>
         </Zoom>
       </React.Fragment>
     )
@@ -178,9 +179,7 @@ const DelayedButton = () => {
 
 function RenderRegistrar() {
   const root = document.getElementById('app-content-view')
-  document.title = 'Owner registry'
   ReactDOM.render(<Registrar/>, root)
-
 }
 
 export default WelcomeScreen

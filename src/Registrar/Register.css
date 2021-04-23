@@ -1,0 +1,37 @@
+.ic-owner {
+    width: 100%;
+    height: fit-content;
+    font-size: 1em;
+    font-style: italic;
+}
+
+.ic-action {
+    display: inline;
+    width: 100%;
+    height: fit-content;
+}
+
+.ic-dog-name td {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    border-bottom: none;
+    font-size: 1em;
+    text-align: center;
+    border-bottom: none;
+}
+
+.ic-dog-info td {
+    width: 100%;
+    height: fit-content;
+    font-size: 0.8em;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-bottom: none;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
