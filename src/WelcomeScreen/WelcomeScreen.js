@@ -2,7 +2,7 @@ import { Button, Zoom } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 import ReactDOM from 'react-dom';
-import Registrar from '../Registrar/Registrar';
+import Register from '../Register/Register';
 import '../WelcomeScreen/WelcomeScreen.css'
 
 const WelcomeScreen = () => {
@@ -165,7 +165,7 @@ const DelayedButton = () => {
             variant="contained" 
             color="secondary" 
             style={{marginTop: 40}} 
-            onClick={RenderRegistrar}>
+            onClick={RenderRegister}>
               Go to register
           </Button>
         </Zoom>
@@ -177,9 +177,9 @@ const DelayedButton = () => {
 
 }
 
-function RenderRegistrar() {
+function RenderRegister() {
   const root = document.getElementById('app-content-view')
-  ReactDOM.render(<Registrar/>, root)
+  ReactDOM.render(<Register/>, root)
 }
 
 export default WelcomeScreen

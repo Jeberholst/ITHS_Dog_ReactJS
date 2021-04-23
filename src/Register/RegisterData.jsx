@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Paper, Table, TableBody, TableCell, TableRow, Divider } from '@material-ui/core';
 import { dogDataRows, convertToProperCase } from '../DataFetcher';
-import CallButton from '../Registrar/CallButton';
+import CallButton from '../Register/CallButton';
 import InfoLabel from '../InfoLabel';
 import MoreButton from '../ComponentsMore/MoreButton'
 import * as Colors from '../ColorConstants'
@@ -54,7 +54,7 @@ const trActionStyle = {
   height: "fit-content",
 };
 
-const RegistrarData = () => {
+const RegisterData = () => {
   return (
     <React.Fragment>
       <CreateTable></CreateTable>
@@ -160,4 +160,4 @@ function Gender({ sex }){
   };
 }
 
-export default RegistrarData
+export default RegisterData
