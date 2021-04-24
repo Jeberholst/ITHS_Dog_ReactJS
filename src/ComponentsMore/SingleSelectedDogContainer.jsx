@@ -1,7 +1,8 @@
 import React from 'react'
 import { Container } from '@material-ui/core';
-import { selectedDog, convertToProperCase } from '../DataFetcher';
+import { selectedDog, convertToProperCase, findByDogName } from '../DataFetcher';
 import InfoLabel from '../InfoLabel';
+import { useParams } from 'react-router-dom';
 
 const breedColor = '#8EA4AA'
 const ageColor = '#93A99E'
@@ -14,21 +15,40 @@ const isNotPresentColor = '#969492'
 const cardStyle = {
   width: 400,
   height: 'fit-content',
-  padding: 5,
+  padding: 10,
   paddingTop: 15,
-  marginBottom: 5,
+  marginBottom: 50,
+  backgroundColor: 'white',
+  borderRadius: 15,
 };
 
-const MoreDogInfoContainer = () => {
+const SingleSelectedDogContainer = () => {
 
+    let params = useParams();
+    let paramDogName = 'Lady';
+    if ('dogname' in params) {
+        paramDogName = params.dogname;
+    }
+    document.title = 'Register - ' + paramDogName
+
+    findByDogName(paramDogName)
+    console.log(selectedDog.name)
+
+    if(selectedDog.name === undefined){
+      return(
+        <React.Fragment>
+            <h1>Error, dog not found</h1>
+        </React.Fragment>
+      )
+    }else {
+      return(
+        <React.Fragment>
+          <CreateContainer></CreateContainer>
+        </React.Fragment>
+      )
   
-    console.log(selectedDog)
+    }
 
-    return(
-      <React.Fragment>
-        <CreateContainer></CreateContainer>
-      </React.Fragment>
-    )
 
 }
 
@@ -114,5 +134,5 @@ function Gender({ sex }){
   };
 }
 
-export default MoreDogInfoContainer;
+export default SingleSelectedDogContainer;
 

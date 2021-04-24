@@ -1,11 +1,10 @@
 import React from 'react'
 import { Container, Paper, Table, TableBody, TableCell, TableRow, Divider } from '@material-ui/core';
 import { dogDataRows, convertToProperCase } from '../DataFetcher';
-import CallButton from '../Registrar/CallButton';
+import CallButton from '../Register/CallButton';
 import InfoLabel from '../InfoLabel';
 import MoreButton from '../ComponentsMore/MoreButton'
 import * as Colors from '../ColorConstants'
-import './Register.css'
 
 const cardStyle = {
   display: 'tableCell',
@@ -20,7 +19,42 @@ const tableStyle = {
    borderBottom: 'none',
 }
 
-const RegistrarData = () => {
+const tcDogNameStyle = {
+  display: 'inline',
+  width: "100%",
+  height: "100%",
+  padding: 10,
+  marginBottom: 15,
+  background: "#ffffff",
+  borderBottom: 'unset',
+  fontSize: 18,
+};
+
+const tcDogInfoStyle = {
+  display: 'inline',
+  width: "100%",
+  height: 'fit-content',
+  fontSize: 12,
+  padding: 5,
+  marginBottom: 5,
+  borderBottom: 'unset',
+};
+
+const trOwnerStyle = {
+  width: '100%',
+  height: "fit-content",
+  paddingTop: 10,
+  fontSize: 22,
+  fontStyle: 'italic',
+};
+
+const trActionStyle = {
+  display: 'inline',
+  width: '100%',
+  height: "fit-content",
+};
+
+const RegisterData = () => {
   return (
     <React.Fragment>
       <CreateTable></CreateTable>
@@ -29,6 +63,8 @@ const RegistrarData = () => {
 }
 
 const CreateTable = () => {
+  console.log(dogDataRows)
+
   return (
     <React.Fragment>
       <Container className='card-grid-container'>
@@ -64,24 +100,24 @@ function InfoContainer(props) {
         <Table style={tableStyle}>
           <TableBody>
 
-            <TableRow className="ic-owner">
+            <TableRow style={trOwnerStyle}>
               {dogOwnerInfo}
             </TableRow>
             <Divider style={{marginTop: 10, marginBottom: 10}}></Divider>
 
-            <TableRow className="ic-action">
+            <TableRow style={trActionStyle}>
               <CallButton phoneNumber={row.ownerPhoneNumber}/>
               <MoreButton dialogData={row} />  
             </TableRow>
             
-            <TableRow className="ic-dog-name">
-              <TableCell>
+            <TableRow>
+              <TableCell style={tcDogNameStyle}>
                 {convertToProperCase(row.name)}
               </TableCell>
             </TableRow>
 
-            <TableRow className="ic-dog-info">
-              <TableCell>
+            <TableRow>
+              <TableCell style={tcDogInfoStyle}>
                 <Gender sex={row.sex}/>
                 <InfoLabel text={convertToProperCase(row.breed)} bgColor={Colors.breedColor}/>
                 <InfoLabel text={convertToProperCase(row.age)  + ' år'} bgColor={Colors.ageColor}/>
@@ -126,4 +162,4 @@ function Gender({ sex }){
   };
 }
 
-export default RegistrarData
+export default RegisterData

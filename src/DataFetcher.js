@@ -7,8 +7,7 @@ const fakeFetchData = async () => {
 
   const fakeData = MockLocalData
   clearDogData()
-  console.log(fakeData)
-  
+
   fakeData.forEach(props => {
                   
       dogDataRows.push(createData(
@@ -28,12 +27,19 @@ const fakeFetchData = async () => {
 
   dogDataRows.sort(dynamicSort('ownerName'));
 
+  if (typeof(Storage) !== "undefined") {
+    sessionStorage.setItem('DogDataRows', JSON.stringify(dogDataRows))
+  } else {
+    console.log('Browser not supporting sessionStorage')
+  }
+
 }
 
 function fetchAllData(){
-    const apiUrl = 'https://api.jsonbin.io/b/5f4d604b514ec5112d136cd6'
+    const apiUrl = 'https://api.jsonbin.io/b/6083ef6348f71c7a71cd1a25'
     console.log("Fetching data...")
     console.log(apiUrl)
+    
     fetch(apiUrl)
         .then(async response => {
             const data = await response.json();
@@ -61,9 +67,7 @@ function fetchAllData(){
               
           });   
 
-            dogDataRows.sort(dynamicSort('owner'));
-            
-            //ReactDOM.render(CreateTable(), rootD)
+          dogDataRows.sort(dynamicSort('owner'));
         
         })
         .catch(error => {
@@ -92,26 +96,30 @@ function clearDogData(){
   dogDataRows = emptyArr
 }
 
-function setData(props){
+function setDogRowData(props){
+  var arr = props;
+  dogDataRows = arr
+}
+
+function setSelectedData(props){
   var arr = props;
   selectedDog = arr
 }
 
 function createData(name, sex, breed, img, present, age, chipNumber, ownerName, ownerLastName, ownerPhoneNumber) {
-    return {
-      name,
-      sex,
-      breed,
-      img,
-      present,
-      age,
-      chipNumber,
-      ownerName,
-      ownerLastName,
-      ownerPhoneNumber,
-    };
-  }
-
+  return {
+    name,
+    sex,
+    breed,
+    img,
+    present,
+    age,
+    chipNumber,
+    ownerName,
+    ownerLastName,
+    ownerPhoneNumber,
+  };
+}
 
 function convertToProperCase(str){
 
@@ -122,6 +130,21 @@ function convertToProperCase(str){
  
 }
 
+function findByDogName(name){
+  const properName = convertToProperCase(name)
+  console.log(properName)
+
+  for (const key in dogDataRows) {
+    if (Object.hasOwnProperty.call(dogDataRows, key)) {
+      if(dogDataRows[key].name === properName){
+        selectedDog = dogDataRows[key]
+        // console.log(dogDataRows[key])
+      }
+    }
+  }
+
+}
+
 export {
     fetchAllData,
     dogDataRows,
@@ -130,5 +153,7 @@ export {
     clearDogData,
     convertToProperCase,
     fakeFetchData,
-    setData,
+    setSelectedData as setData,
+    setDogRowData,
+    findByDogName,
 };
