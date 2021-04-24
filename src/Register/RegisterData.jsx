@@ -7,15 +7,6 @@ import MoreButton from '../ComponentsMore/MoreButton'
 import * as Colors from '../ColorConstants'
 import '../Register/Register.css'
 
-const cardStyle = {
-  display: 'tableCell',
-  width: 300,
-  height: 200,
-  minWidth: 300,
-  minHeight: 200,
-  marginBottom: 5,
-};
-
 const tableStyle = {
    borderBottom: 'none',
 }
