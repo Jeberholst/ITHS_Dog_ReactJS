@@ -31,7 +31,7 @@ const fakeFetchData = async () => {
 }
 
 function fetchAllData(){
-    const apiUrl = 'https://api.jsonbin.io/b/5f4d604b514ec5112d136cd6'
+    const apiUrl = 'https://api.jsonbin.io/b/6083ef6348f71c7a71cd1a25'
     console.log("Fetching data...")
     console.log(apiUrl)
     
@@ -62,9 +62,7 @@ function fetchAllData(){
               
           });   
 
-            dogDataRows.sort(dynamicSort('owner'));
-            
-            //ReactDOM.render(CreateTable(), rootD)
+          dogDataRows.sort(dynamicSort('owner'));
         
         })
         .catch(error => {
@@ -123,6 +121,26 @@ function convertToProperCase(str){
  
 }
 
+function findByDogName(name){
+  const properName = convertToProperCase(name)
+  console.log(properName)
+
+  for (const key in dogDataRows) {
+    if (Object.hasOwnProperty.call(dogDataRows, key)) {
+      if(dogDataRows[key].name === properName){
+        selectedDog = dogDataRows[key]
+        console.log(dogDataRows[key])
+        // return dogDataRows[key]
+      }
+      // const element = object[key];
+      // selectedDog = 
+      // console.log(dogDataRows[key])
+    }
+  }
+
+}
+
+
 export {
     fetchAllData,
     dogDataRows,
@@ -132,4 +150,5 @@ export {
     convertToProperCase,
     fakeFetchData,
     setData,
+    findByDogName,
 };
