@@ -35,3 +35,25 @@
     align-content: center;
     text-align: center;
 }
+
+.main-dog-name-tr td {
+    display: 'inline';
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    border-bottom: none;
+    font-size: 1.2em;
+    justify-content: center;
+    text-align: center;
+}
+
+.main-dog-info-tr td{
+    display: inline;
+    width: 100%;
+    border-bottom: none;
+    height: fit-content;
+    font-size: 1.2em;
+    font-weight: 400;
+}

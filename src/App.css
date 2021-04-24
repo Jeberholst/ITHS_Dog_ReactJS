@@ -9,12 +9,7 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    animation: fadeInAnimation ease 2s;
 }
 
 .App-header {
@@ -58,7 +53,7 @@
   display: grid;
   width: 100%;
   gap: 1em;
-  animation: slideInWithAnim ease 2s;
+  animation: fadeInAnimation ease-in 2s linear;
 }
 
 @media screen and (min-width: 992px) {
@@ -79,10 +74,6 @@
   }
 }
 
-/* .card-grid-container  {
-  transform: translateX(10px);
-} */
-
 @keyframes fadeInAnimation {
   0% {
       opacity: 0;
@@ -90,6 +81,24 @@
   100% {
       opacity: 1;
    }
+}
+
+@keyframes fadeOutIn {
+  0% {
+    opacity: 0.5;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes slideInWithAnim {

@@ -7,8 +7,6 @@ import { fakeFetchData, setDogRowData, fetchAllData } from './DataFetcher';
 import SingleSelectedDogContainer from './ComponentsMore/SingleSelectedDogContainer';
 
 function App() {
-
-
   // fakeFetchData()
 
   if (typeof(Storage) !== "undefined") {

@@ -73,5 +73,4 @@ const MoreInfoDialog = ({ openDialog, closeDialog }) => {
   );
 }
 
-
 export default MoreInfoDialog;
