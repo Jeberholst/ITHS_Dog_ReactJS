@@ -63,6 +63,8 @@ const RegisterData = () => {
 }
 
 const CreateTable = () => {
+  console.log(dogDataRows)
+
   return (
     <React.Fragment>
       <Container className='card-grid-container'>

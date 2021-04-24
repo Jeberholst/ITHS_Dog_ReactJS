@@ -7,8 +7,7 @@ const fakeFetchData = async () => {
 
   const fakeData = MockLocalData
   clearDogData()
-  console.log(fakeData)
-  
+
   fakeData.forEach(props => {
                   
       dogDataRows.push(createData(
@@ -27,6 +26,12 @@ const fakeFetchData = async () => {
   }); 
 
   dogDataRows.sort(dynamicSort('ownerName'));
+
+  if (typeof(Storage) !== "undefined") {
+    sessionStorage.setItem('DogDataRows', JSON.stringify(dogDataRows))
+  } else {
+    console.log('Browser not supporting sessionStorage')
+  }
 
 }
 
@@ -91,26 +96,30 @@ function clearDogData(){
   dogDataRows = emptyArr
 }
 
-function setData(props){
+function setDogRowData(props){
+  var arr = props;
+  dogDataRows = arr
+}
+
+function setSelectedData(props){
   var arr = props;
   selectedDog = arr
 }
 
 function createData(name, sex, breed, img, present, age, chipNumber, ownerName, ownerLastName, ownerPhoneNumber) {
-    return {
-      name,
-      sex,
-      breed,
-      img,
-      present,
-      age,
-      chipNumber,
-      ownerName,
-      ownerLastName,
-      ownerPhoneNumber,
-    };
-  }
-
+  return {
+    name,
+    sex,
+    breed,
+    img,
+    present,
+    age,
+    chipNumber,
+    ownerName,
+    ownerLastName,
+    ownerPhoneNumber,
+  };
+}
 
 function convertToProperCase(str){
 
@@ -129,17 +138,12 @@ function findByDogName(name){
     if (Object.hasOwnProperty.call(dogDataRows, key)) {
       if(dogDataRows[key].name === properName){
         selectedDog = dogDataRows[key]
-        console.log(dogDataRows[key])
-        // return dogDataRows[key]
+        // console.log(dogDataRows[key])
       }
-      // const element = object[key];
-      // selectedDog = 
-      // console.log(dogDataRows[key])
     }
   }
 
 }
-
 
 export {
     fetchAllData,
@@ -149,6 +153,7 @@ export {
     clearDogData,
     convertToProperCase,
     fakeFetchData,
-    setData,
+    setSelectedData as setData,
+    setDogRowData,
     findByDogName,
 };

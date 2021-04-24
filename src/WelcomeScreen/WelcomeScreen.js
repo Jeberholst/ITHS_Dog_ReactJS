@@ -6,6 +6,7 @@ import Register from '../Register/Register';
 import '../WelcomeScreen/WelcomeScreen.css'
 
 const WelcomeScreen = () => {
+
   document.title = 'Welcome Screen'
 
   return (
@@ -178,8 +179,8 @@ const DelayedButton = () => {
 }
 
 function RenderRegister() {
-  const root = document.getElementById('app-content-view')
-  ReactDOM.render(<Register/>, root)
+  const appContent = document.getElementById('app-content-view')
+  ReactDOM.render(<Register/>, appContent)
 }
 
 export default WelcomeScreen
