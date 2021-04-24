@@ -56,19 +56,19 @@
   animation: fadeInAnimation ease-in 2s linear;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 980px) {
   .card-grid-container {
     columns: 3;
   }
 }
 
-@media screen and (min-width: 625px) and (max-width: 991px) {
+@media screen and (min-width: 635px) and (max-width: 979px) {
   .card-grid-container {
     columns: 2;
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 625px) {
+@media screen and (min-width: 600px) and (max-width: 634px) {
   .card-grid-container {
     columns: 1;
   }

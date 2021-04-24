@@ -53,7 +53,7 @@ const CreateTable = () => {
 function Card(props) {
   return (
     <React.Fragment>
-        <Container className='card-container' style={cardStyle} component={Paper}>
+        <Container className='register-data-card-container' component={Paper}>
             <InfoContainer props={props}  />
         </Container>
     </React.Fragment>

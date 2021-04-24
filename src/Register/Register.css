@@ -57,3 +57,13 @@
     font-size: 1.2em;
     font-weight: 400;
 }
+
+.register-data-card-container {
+    display: table-cell;
+    width: 100%;
+    max-width: 250px;
+    height: 200px;
+    min-width: 300px;
+    min-height: 200px;
+    margin-bottom: 5px;
+}
