@@ -4,14 +4,6 @@ import { selectedDog, convertToProperCase, findByDogName } from '../DataFetcher'
 import InfoLabel from '../InfoLabel';
 import { useParams } from 'react-router-dom';
 
-const breedColor = '#8EA4AA'
-const ageColor = '#93A99E'
-const sexMaleColor = '#74777C'
-const sexFemaleColor = '#B299AD'
-const chipNumberColor = '#2d2d2d'
-const isPresentColor = '#4D9861'
-const isNotPresentColor = '#969492'
-
 const cardStyle = {
   width: 400,
   height: 'fit-content',
@@ -48,8 +40,6 @@ const SingleSelectedDogContainer = () => {
       )
   
     }
-
-
 }
 
 function CreateContainer() {
@@ -73,23 +63,22 @@ function InfoContainer(){
 
       <div className='info-container'>
           <div className='info-container-row'>
-              <InfoLabel text={convertToProperCase(selectedDog.breed)} bgColor={breedColor}/>
-              <InfoLabel text={convertToProperCase(selectedDog.age)  + ' år'} bgColor={ageColor}/>
+              <InfoLabel text={convertToProperCase(selectedDog.breed)}/>
+              <InfoLabel text={convertToProperCase(selectedDog.age)  + ' år'}/>
               <Gender sex={selectedDog.sex}/>
               <IsPresent present={selectedDog.present}/>
           </div>
 
           <div className='info-container-row'>
-              <InfoLabel text={selectedDog.chipNumber} bgColor={chipNumberColor}/>
-              <InfoLabel text={dogOwnerInfo} bgColor={chipNumberColor}/>
-              <InfoLabel text={selectedDog.ownerPhoneNumber} bgColor={chipNumberColor}/>
+              <InfoLabel text={selectedDog.chipNumber}/>
+              <InfoLabel text={dogOwnerInfo}/>
+              <InfoLabel text={selectedDog.ownerPhoneNumber}/>
           </div>
       </div>
 
     </React.Fragment>
   );
 
-      
 }
 
 function IsPresent(props) {
@@ -97,11 +86,11 @@ function IsPresent(props) {
 
   if(isPresent){
     return (
-      <InfoLabel text={'Närvarande'} bgColor={isPresentColor}/>
+      <InfoLabel text={'Närvarande'}/>
     );
   } else {
     return (
-      <InfoLabel text={'Frånvarande'} bgColor={isNotPresentColor}/>
+      <InfoLabel text={'Frånvarande'}/>
     );
 
   }
@@ -121,15 +110,15 @@ function Gender({ sex }){
   switch(String(sex)){
       case 'male':
         return (
-          <InfoLabel text={convertToProperCase(sex)} bgColor={sexMaleColor}/>
+          <InfoLabel text={convertToProperCase(sex)}/>
         );
       case 'female':
         return (
-          <InfoLabel text={convertToProperCase(sex)} bgColor={sexFemaleColor}/>
+          <InfoLabel text={convertToProperCase(sex)}/>
         );
       default:
         return (
-          <InfoLabel text={'Not supplied'} bgColor={"#000000"}/>
+          <InfoLabel text={'Not supplied'}/>
         );
   };
 }
