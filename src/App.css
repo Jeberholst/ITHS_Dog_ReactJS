@@ -28,6 +28,10 @@
 }
 
 .App-content-view {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
   background: #282c34;
 }
 

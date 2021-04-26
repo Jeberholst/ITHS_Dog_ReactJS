@@ -1,44 +1,12 @@
-import MockLocalData from './DogFetchedData.json';
-
 var dogDataRows = [];
 var selectedDog = createData();
 
-const fakeFetchData = async () => {
-
-  const fakeData = MockLocalData
-  clearDogData()
-
-  fakeData.forEach(props => {
-                  
-      dogDataRows.push(createData(
-            props.name, 
-            props.sex, 
-            props.breed, 
-            props.img, 
-            props.present, 
-            props.age, 
-            props.chipNumber, 
-            props.owner.name,
-            props.owner.lastName,
-            props.owner.phoneNumber,
-      ));
-    
-  }); 
-
-  dogDataRows.sort(dynamicSort('ownerName'));
-
-  if (typeof(Storage) !== "undefined") {
-    sessionStorage.setItem('DogDataRows', JSON.stringify(dogDataRows))
-  } else {
-    console.log('Browser not supporting sessionStorage')
-  }
-
-}
 
 function fetchAllData(){
     const apiUrl = 'https://api.jsonbin.io/b/6083ef6348f71c7a71cd1a25'
     console.log("Fetching data...")
     console.log(apiUrl)
+    dogDataRows.length = 0;
     
     fetch(apiUrl)
         .then(async response => {
@@ -49,10 +17,10 @@ function fetchAllData(){
                 const error = (data && data.message) || response.statusText;
                 return Promise.reject(error);
             }
-
+            var arr = [];
             data.forEach(props => {
                   
-                dogDataRows.push(createData(
+              arr.push(createData(
                       props.name, 
                       props.sex, 
                       props.breed, 
@@ -67,8 +35,14 @@ function fetchAllData(){
               
           });   
 
-          dogDataRows.sort(dynamicSort('owner'));
-        
+          arr.sort(dynamicSort('ownerName'));
+          
+        if (typeof(Storage) !== "undefined") {
+          sessionStorage.setItem('DogDataRows', JSON.stringify(arr))
+        } else {
+          console.log('Browser not supporting sessionStorage')
+        }
+        console.log(arr)
         })
         .catch(error => {
             console.error('There was an error!', error);
@@ -92,13 +66,16 @@ function dynamicSort(property) {
 }
 
 function clearDogData(){
-  var emptyArr = [];
-  dogDataRows = emptyArr
+  // var emptyArr = [];
+  dogDataRows.length = 0;
 }
 
-function setDogRowData(props){
-  var arr = props;
-  dogDataRows = arr
+function setDogRowData(){
+  // clearDogData()
+  dogDataRows.length = 0;
+  const storageArr =  sessionStorage.getItem('DogDataRows')
+  dogDataRows = JSON.parse(storageArr);
+  console.log(dogDataRows)
 }
 
 function setSelectedData(props){
@@ -152,7 +129,7 @@ export {
     createData,
     clearDogData,
     convertToProperCase,
-    fakeFetchData,
+    // fakeFetchData,
     setSelectedData as setData,
     setDogRowData,
     findByDogName,
