@@ -32,8 +32,6 @@ function App() {
     if(storedRows !== null){
       if (storedRows.length !== 0){
         console.log('Data retrieved, array NOT empty')
-        // console.log(storedRows)
-    
         setDogRowData()
         setTimeout(() => {
           setLoaded(true)

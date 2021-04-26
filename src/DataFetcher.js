@@ -1,7 +1,6 @@
 var dogDataRows = [];
 var selectedDog = createData();
 
-
 function fetchAllData(){
     const apiUrl = 'https://api.jsonbin.io/b/6083ef6348f71c7a71cd1a25'
     console.log("Fetching data...")
@@ -65,13 +64,7 @@ function dynamicSort(property) {
   }
 }
 
-function clearDogData(){
-  // var emptyArr = [];
-  dogDataRows.length = 0;
-}
-
 function setDogRowData(){
-  // clearDogData()
   dogDataRows.length = 0;
   const storageArr =  sessionStorage.getItem('DogDataRows')
   dogDataRows = JSON.parse(storageArr);
@@ -127,9 +120,7 @@ export {
     dogDataRows,
     selectedDog,
     createData,
-    clearDogData,
     convertToProperCase,
-    // fakeFetchData,
     setSelectedData as setData,
     setDogRowData,
     findByDogName,
