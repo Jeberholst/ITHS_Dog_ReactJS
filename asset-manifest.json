@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/IthsDogReactJS/static/css/main.6f495fba.chunk.css",
-    "main.js": "/IthsDogReactJS/static/js/main.514eec47.chunk.js",
-    "main.js.map": "/IthsDogReactJS/static/js/main.514eec47.chunk.js.map",
+    "main.js": "/IthsDogReactJS/static/js/main.0f2f3d2c.chunk.js",
+    "main.js.map": "/IthsDogReactJS/static/js/main.0f2f3d2c.chunk.js.map",
     "runtime-main.js": "/IthsDogReactJS/static/js/runtime-main.0ee22df6.js",
     "runtime-main.js.map": "/IthsDogReactJS/static/js/runtime-main.0ee22df6.js.map",
-    "static/js/2.12ebfc20.chunk.js": "/IthsDogReactJS/static/js/2.12ebfc20.chunk.js",
-    "static/js/2.12ebfc20.chunk.js.map": "/IthsDogReactJS/static/js/2.12ebfc20.chunk.js.map",
+    "static/js/2.4c4b7580.chunk.js": "/IthsDogReactJS/static/js/2.4c4b7580.chunk.js",
+    "static/js/2.4c4b7580.chunk.js.map": "/IthsDogReactJS/static/js/2.4c4b7580.chunk.js.map",
     "static/js/3.09d1c69e.chunk.js": "/IthsDogReactJS/static/js/3.09d1c69e.chunk.js",
     "static/js/3.09d1c69e.chunk.js.map": "/IthsDogReactJS/static/js/3.09d1c69e.chunk.js.map",
     "index.html": "/IthsDogReactJS/index.html",
     "static/css/main.6f495fba.chunk.css.map": "/IthsDogReactJS/static/css/main.6f495fba.chunk.css.map",
-    "static/js/2.12ebfc20.chunk.js.LICENSE.txt": "/IthsDogReactJS/static/js/2.12ebfc20.chunk.js.LICENSE.txt",
+    "static/js/2.4c4b7580.chunk.js.LICENSE.txt": "/IthsDogReactJS/static/js/2.4c4b7580.chunk.js.LICENSE.txt",
     "static/media/dog.6521aa49.svg": "/IthsDogReactJS/static/media/dog.6521aa49.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.0ee22df6.js",
-    "static/js/2.12ebfc20.chunk.js",
+    "static/js/2.4c4b7580.chunk.js",
     "static/css/main.6f495fba.chunk.css",
-    "static/js/main.514eec47.chunk.js"
+    "static/js/main.0f2f3d2c.chunk.js"
   ]
 }
