@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Register from './Register/Register'
 import WelcomeScreen from './WelcomeScreen/WelcomeScreen';
-import { setDogRowData, fetchAllData, dogDataRows } from './DataFetcher';
+import { setDogRowData, fetchAllData } from './DataFetcher';
 import SingleSelectedDogContainer from './ComponentsMore/SingleSelectedDogContainer';
 import { useState } from 'react';
 import { CircularProgress, makeStyles } from '@material-ui/core';
