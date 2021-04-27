@@ -49,7 +49,7 @@
     text-align: center;
 }
 
-.main-dog-info-tr td{
+.main-dog-info-tr td {
     display: inline;
     width: 100%;
     border-bottom: none;
@@ -65,5 +65,25 @@
     height: 200px;
     min-width: 300px;
     min-height: 200px;
-    margin-bottom: 5px;
+    margin-bottom: 5px; 
 }
+
+.register-data-card-container:hover {
+    animation-name: animRegisterCardScale;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    animation-direction: reverse;
+}
+
+@keyframes animRegisterCardScale {
+    0% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+

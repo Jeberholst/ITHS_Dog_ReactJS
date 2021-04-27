@@ -1,4 +1,4 @@
-.root{
+.root {
   background-color: #282c34;
 }
 
@@ -9,7 +9,7 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-    animation: fadeInAnimation ease 2s;
+    /* animation: fadeInAnimation ease 2s; */
 }
 
 .App-header {
@@ -51,13 +51,6 @@
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #282c34;
-}
-
-.card-grid-container {
-  display: grid;
-  width: 100%;
-  gap: 1em;
-  animation: fadeInAnimation ease-in 2s linear;
 }
 
 @media screen and (min-width: 980px) {

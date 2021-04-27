@@ -8,6 +8,8 @@ import SingleSelectedDogContainer from './ComponentsMore/SingleSelectedDogContai
 import { useState } from 'react';
 import { CircularProgress, makeStyles } from '@material-ui/core';
 
+// HashRouter
+
 const progressBarStyle = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -35,7 +37,7 @@ function App() {
         setDogRowData()
         setTimeout(() => {
           setLoaded(true)
-        }, [500])
+        }, [200])
       }
     } else {
       console.log('Fetching data, array empty')

@@ -21,8 +21,8 @@ const SingleSelectedDogContainer = () => {
     if ('dogname' in params) {
         paramDogName = params.dogname;
     }
-    document.title = 'Register - ' + paramDogName
 
+    document.title = 'Iths Dog - Register - ' + paramDogName
     findByDogName(paramDogName)
     console.log(selectedDog.name)
 
