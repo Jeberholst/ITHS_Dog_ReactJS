@@ -35,7 +35,7 @@ function App() {
         setDogRowData()
         setTimeout(() => {
           setLoaded(true)
-        }, [200])
+        }, [1000])
       }
     } else {
       console.log('Fetching data, array empty')
